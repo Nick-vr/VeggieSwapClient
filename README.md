@@ -1,3 +1,5 @@
-# 💮 VeggieSwapClient 💮
+# ⚪ VeggieSwapClient ⚪
 
-# 💮 VeggieSwapServer : https://github.com/Dries-Maes/VeggieSwapServer 💮
+# 🟣 VeggieSwapServer 🟣
+
+# 〰 https://github.com/Dries-Maes/VeggieSwapServer 〰
