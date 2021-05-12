@@ -1,5 +1,7 @@
-# ✨ VeggieSwapClient ✨
+# ✨ VeggieSwap ✨
 
-# 🟣 [VeggieSwapServer](https://github.com/Dries-Maes/VeggieSwapServer) 🟣
+#### 〰 VeggieSwapClient 〰
 
-> By: Dries, Kobe, Nick, Pieter
+#### 〰 [VeggieSwapServer](https://github.com/Dries-Maes/VeggieSwapServer) 〰
+
+###### > By: Dries, Kobe, Nick, Pieter
