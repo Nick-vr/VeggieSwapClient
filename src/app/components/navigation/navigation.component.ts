@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { ImgPath } from '../../app.component'
 
 @Component({
   selector: 'app-navigation',
@@ -6,10 +7,13 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./navigation.component.scss']
 })
 export class NavigationComponent implements OnInit {
+  VeggiesImgPath: string;
 
-  constructor() { }
-
-  ngOnInit(): void {
+  constructor() {
+    this.VeggiesImgPath = `${ImgPath}/veggies`;
   }
 
+  ngOnInit(): void {
+
+  }
 }

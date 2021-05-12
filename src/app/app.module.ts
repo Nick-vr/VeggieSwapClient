@@ -29,7 +29,7 @@ import { NavigationComponent } from './components/navigation/navigation.componen
     AppRoutingModule,
     BrowserAnimationsModule,
     FormsModule,
-    ButtonModule
+    ButtonModule,
   ],
   providers: [],
   bootstrap: [AppComponent]
