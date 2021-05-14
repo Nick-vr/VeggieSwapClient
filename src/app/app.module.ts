@@ -8,6 +8,7 @@ import { FormsModule } from '@angular/forms';
 // PrimeNG Components
 import {ButtonModule} from 'primeng/button';
 import {TabViewModule} from 'primeng/tabview';
+import {CardModule} from 'primeng/card';
 
 // Generated Components
 import { HeaderComponent } from './components/header/header.component';
@@ -39,7 +40,8 @@ import { PageNotFoundComponent } from './pages/page-not-found/page-not-found.com
     BrowserAnimationsModule,
     FormsModule,
     ButtonModule,
-    TabViewModule
+    TabViewModule,
+    CardModule
   ],
   providers: [],
   bootstrap: [AppComponent]

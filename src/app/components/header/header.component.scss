@@ -7,3 +7,18 @@ header {
   background-size: cover;
   background-attachment: fixed;
 }
+
+.banner-text {
+  font-family: "Libre Baskerville", serif;
+  line-height: 3rem;
+  position: absolute;
+  top: 150px;
+  left: 20%;
+  width: 30vw;
+  text-align: justify;
+
+  span {
+    background-color: var(--surface-b);
+    opacity: 0.8;
+  }
+}
