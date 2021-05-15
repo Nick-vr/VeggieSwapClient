@@ -1,3 +1,7 @@
+.card {
+  margin: 0 10px;
+}
+
 .round {
   border-radius: 50%;
   width: 70%;
@@ -7,4 +11,26 @@
 
 h3 {
   text-align: center;
+}
+
+.card-section {
+  margin-top: 200px;
+}
+
+.garden-section {
+  margin-top: 200px;
+  background: url(../../../assets/images/garden.jpg);
+  width: 100%;
+  height: 50vh;
+  background-position: center right;
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-attachment: fixed;
+  img {
+    width: 100%;
+  }
+}
+
+.why-section {
+  margin-top: 200px;
 }
