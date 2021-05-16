@@ -20,6 +20,7 @@ import { HowItWorksComponent } from './pages/how-it-works/how-it-works.component
 import { SignInComponent } from './pages/sign-in/sign-in.component';
 import { RegisterComponent } from './components/register/register.component';
 import { PageNotFoundComponent } from './pages/page-not-found/page-not-found.component';
+import { UsertableComponent } from './components/usertable/usertable.component';
 
 @NgModule({
   declarations: [
@@ -32,7 +33,8 @@ import { PageNotFoundComponent } from './pages/page-not-found/page-not-found.com
     HowItWorksComponent,
     SignInComponent,
     RegisterComponent,
-    PageNotFoundComponent
+    PageNotFoundComponent,
+    UsertableComponent
   ],
   imports: [
     BrowserModule,
