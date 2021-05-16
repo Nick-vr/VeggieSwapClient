@@ -13,20 +13,14 @@ h3 {
   text-align: center;
 }
 
-.card-section {
+section {
   margin-top: 200px;
 }
 
-.garden-section {
-  margin-top: 200px;
-  background: url(../../../assets/images/garden.jpg);
-  width: 100%;
+.video-section {
   height: 50vh;
-  background-position: center right;
-  background-repeat: no-repeat;
-  background-size: cover;
-  background-attachment: fixed;
-  img {
+  overflow: hidden;
+  video {
     width: 100%;
   }
 }
