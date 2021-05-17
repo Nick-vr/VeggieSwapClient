@@ -12,7 +12,9 @@ import { TabViewModule } from 'primeng/tabview';
 import { TableModule } from 'primeng/table';
 import { CardModule } from 'primeng/card';
 import { MultiSelectModule } from 'primeng/multiselect';
-
+import {ContextMenuModule} from 'primeng/contextmenu';
+import {DropdownModule} from 'primeng/dropdown';
+import {InputTextModule} from 'primeng/inputtext';
 
 // Generated Components
 import { HeaderComponent } from './components/header/header.component';
@@ -53,6 +55,9 @@ import { LoginComponent } from './components/login/login.component';
     TableModule,
     CardModule,
     MultiSelectModule,
+    ContextMenuModule,
+    DropdownModule,
+    InputTextModule,
   ],
   providers: [],
   bootstrap: [AppComponent]

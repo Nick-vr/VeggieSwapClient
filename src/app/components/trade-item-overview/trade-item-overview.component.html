@@ -1,12 +1,10 @@
 <!-- <button (click)="getData()">data</button> -->
 
 <div class="card">
-  <h5>Filter Row</h5>
-  <p>Filters are displayed inline within a separate row.</p>
   <p-table #dt2 [value]="getResources()" dataKey="id" [rows]="10" [showCurrentPageReport]="true"
-    [rowsPerPageOptions]="[10,25,50]" [loading]="loading" styleClass="p-datatable-customers" [paginator]="true"
+    [rowsPerPageOptions]="[10,25,50]" [loading]="loading" [paginator]="true"
     currentPageReportTemplate="Showing {first} to {last} of {totalRecords} entries"
-    [globalFilterFields]="['name','country.name','representative.name','status']">
+    [globalFilterFields]="['name','tradeItems.userFirstName','representative.name','status']">
 
     <ng-template pTemplate="caption">
       <div class="p-d-flex">
@@ -21,17 +19,13 @@
     <ng-template pTemplate="header">
       <tr>
         <th>Name</th>
-        <th>Country</th>
         <th>Resource</th>
-        <th>Status</th>
+        <th>Amount</th>
         <th style="width: 6rem">Verified</th>
       </tr>
       <tr>
         <th>
           <p-columnFilter type="text" field="userFirstName"></p-columnFilter>
-        </th>
-        <th>
-          <p-columnFilter type="text" field="country.name"></p-columnFilter>
         </th>
         <th>
           <p-columnFilter field="resource" matchMode="in" [showMenu]="false">
@@ -52,10 +46,10 @@
         <th>
           <p-columnFilter field="status" matchMode="equals" [showMenu]="false">
             <ng-template pTemplate="filter" let-value let-filter="filterCallback">
-              <p-dropdown [ngModel]="value" [options]="statuses" (onChange)="filter($event.value)" placeholder="Any"
-                [showClear]="true">
+              <p-dropdown [ngModel]="value" [options]="getResources()" (onChange)="filter($event.value)"
+                placeholder="Any" [showClear]="true">
                 <ng-template let-option pTemplate="item">
-                  <span [class]="'customer-badge status-' + option.value">{{option.label}}</span>
+                  <span [class]="'customer-badge status-' + option.value">{{option.amount}}</span>
                 </ng-template>
               </p-dropdown>
             </ng-template>
@@ -72,8 +66,8 @@
           {{customer.name}}
         </td>
         <td>
-          <img src="assets/showcase/images/demo/flag/flag_placeholder.png"
-            [class]="'flag flag-' + customer.country.code" width="30">
+          <img src="../../../assets/images/veggies/asparaguses.svg" [class]="'flag flag-' + customer.country.code"
+            width="30">
           <span class="image-text">{{customer.country.name}}</span>
         </td>
         <td>
