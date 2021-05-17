@@ -9,9 +9,9 @@ import { HttpClientModule } from '@angular/common/http';
 // PrimeNG Components
 import { ButtonModule } from 'primeng/button';
 import { TabViewModule } from 'primeng/tabview';
+import { TableModule } from 'primeng/table';
 import { CardModule } from 'primeng/card';
 import { MultiSelectModule } from 'primeng/multiselect';
-import { TableModule } from 'primeng/table';
 
 
 // Generated Components
