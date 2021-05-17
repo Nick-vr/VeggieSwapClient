@@ -1,9 +1,9 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { TradeItemOverviewService } from 'src/app/core/services/trade-item-overview.service';
 import { TradeItem, Resource } from 'src/app/core/interfaces/TradeItem';
-import { ThisReceiver } from '@angular/compiler';
+import { LazyLoadEvent } from 'primeng/api';
 
 @Component({
   selector: 'app-trade-item-overview',
@@ -14,15 +14,26 @@ import { ThisReceiver } from '@angular/compiler';
 export class TradeItemOverviewComponent implements OnInit {
 
   tradeItems: any[] = [];
+  resources: Resource[] = [];
+  loading!: boolean;
 
-  resources: any[] = [];
+  totalRecords!: number;
+  cols!: any[];
 
-  loading: boolean = false;
+
 
   constructor(private tradeItemOverviewService: TradeItemOverviewService) {}
 
   ngOnInit(): void {
       this.getData();
+        //  this.resources = [
+        //     {name: "Asparagus", imageUrl: 'asparaguses.svg'},
+        //     {name: "Anna Fali", imageUrl: 'artichokes.svg'},
+        //     {name: "Asiya Javayant", imageUrl: 'asparaguses.svg'},
+        //     {name: "Bernardo Dominic", imageUrl: 'asparaguses.svg'},
+        //     {name: "Elwin Sharvill", imageUrl: 'artichokes.svg'},
+        //     {name: "Ioni Bowcher", imageUrl: 'artichokes.svg'},
+        // ];
   }
 
   getData() {

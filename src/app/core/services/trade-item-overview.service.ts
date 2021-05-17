@@ -8,7 +8,7 @@ import { Observable } from 'rxjs';
 })
 export class TradeItemOverviewService {
 
-  private endpoint = 'https://localhost:44361/api/TradeItem'
+  private endpoint = 'https://localhost:44360/api/TradeItem'
 
   httpOptions = {
     headers: new HttpHeaders({ 'Content-Type': 'application/json' })
