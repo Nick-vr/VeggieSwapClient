@@ -15,6 +15,7 @@ import { MultiSelectModule } from 'primeng/multiselect';
 import {ContextMenuModule} from 'primeng/contextmenu';
 import {DropdownModule} from 'primeng/dropdown';
 import {InputTextModule} from 'primeng/inputtext';
+import {ToastModule} from 'primeng/toast';
 
 // Generated Components
 import { HeaderComponent } from './components/header/header.component';
@@ -58,6 +59,7 @@ import { LoginComponent } from './components/login/login.component';
     ContextMenuModule,
     DropdownModule,
     InputTextModule,
+    ToastModule,
   ],
   providers: [],
   bootstrap: [AppComponent]
