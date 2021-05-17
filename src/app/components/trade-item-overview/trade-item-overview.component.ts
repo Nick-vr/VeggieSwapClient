@@ -2,7 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { TradeItemOverviewService } from 'src/app/core/services/trade-item-overview.service';
-import { TradeItem } from 'src/app/core/interfaces/TradeItem';
+import { TradeItem, Resource } from 'src/app/core/interfaces/TradeItem';
+import { ThisReceiver } from '@angular/compiler';
 
 @Component({
   selector: 'app-trade-item-overview',
@@ -12,21 +13,33 @@ import { TradeItem } from 'src/app/core/interfaces/TradeItem';
 @Injectable()
 export class TradeItemOverviewComponent implements OnInit {
 
-  data: TradeItem[] = [];
+  tradeItems: any[] = [];
+
+  resources: any[] = [];
+
+  loading: boolean = false;
 
   constructor(private tradeItemOverviewService: TradeItemOverviewService) {}
 
-    ngOnInit(): void {
+  ngOnInit(): void {
+      this.getData();
   }
 
   getData() {
-      this.tradeItemOverviewService.getTradeItems().subscribe(x => this.data = x);
-      console.log(this.data);
+      this.tradeItemOverviewService.getTradeItems().subscribe(x => this.tradeItems = x);
   }
 
-  //   getData(){
-  //   fetch(this.url)
-  //     .then(res => res.json())
-  //     .then(data => console.log(data))
-  // }
+  getResources() {
+    this.tradeItems.forEach(element => {
+        if (!this.resources.includes(element.resource)) {
+          this.resources.push(element.resource);
+        }
+    });
+    return this.resources;
+  }
+
+  getTradeItems() {
+    return this.tradeItems;
+  }
+
 }

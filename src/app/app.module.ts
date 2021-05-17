@@ -4,13 +4,14 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { FormsModule } from '@angular/forms';
-import {TableModule} from 'primeng/table';
 import { HttpClientModule } from '@angular/common/http';
 
 // PrimeNG Components
-import {ButtonModule} from 'primeng/button';
-import {TabViewModule} from 'primeng/tabview';
-import {CardModule} from 'primeng/card';
+import { ButtonModule } from 'primeng/button';
+import { TabViewModule } from 'primeng/tabview';
+import { CardModule } from 'primeng/card';
+import { MultiSelectModule } from 'primeng/multiselect';
+import { TableModule } from 'primeng/table';
 
 
 // Generated Components
@@ -49,8 +50,9 @@ import { LoginComponent } from './components/login/login.component';
     HttpClientModule,
     ButtonModule,
     TabViewModule,
-    CardModule,
     TableModule,
+    CardModule,
+    MultiSelectModule,
   ],
   providers: [],
   bootstrap: [AppComponent]
