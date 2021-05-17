@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { TradeItem } from 'src/app/core/interfaces/TradeItem';
+import { TradeItemOverviewService } from 'src/app/core/services/trade-item-overview.service';
 
 @Component({
   selector: 'app-trade-item-overview',
@@ -10,21 +11,21 @@ import { Injectable } from '@angular/core';
 @Injectable()
 export class TradeItemOverviewComponent implements OnInit {
 
-  private url = 'https://localhost:44361/api/TradeItem'
+  data?: TradeItem[] = [];
 
-  constructor(private http: HttpClient) {}
+  constructor(private tradeItemOverview: TradeItemOverviewService) {}
 
     ngOnInit(): void {
   }
 
-  getData() {
-      let data = this.http.get(this.url);
-      console.log(data);
+  getData(): void{
+    this.tradeItemOverview.getTradeItems().subscribe(x => this.data == x);
+    console.log(this.data);
   }
 
-  //   getData(){
-  //   fetch(this.url)
-  //     .then(res => res.json())
-  //     .then(data => console.log(data))
-  // }
+    // getData(){
+    // fetch(this.url)
+    //   .then(res => res.json())
+    //   .then(data => console.log(data))
+    // }
 }
