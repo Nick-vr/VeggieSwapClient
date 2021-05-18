@@ -21,14 +21,6 @@ export class TradeItemOverviewComponent implements OnInit {
 
   ngOnInit(): void {
       this.getData();
-         this.resources = [
-            {name: "Asparagus", imageUrl: 'asparaguses.svg'},
-            {name: "Anna Fali", imageUrl: 'artichokes.svg'},
-            {name: "Asiya Javayant", imageUrl: 'asparaguses.svg'},
-            {name: "Bernardo Dominic", imageUrl: 'asparaguses.svg'},
-            {name: "Elwin Sharvill", imageUrl: 'artichokes.svg'},
-            {name: "Ioni Bowcher", imageUrl: 'artichokes.svg'},
-        ];
   }
 
   clear(table: Table) {

@@ -29,6 +29,7 @@ import { RegisterComponent } from './components/register/register.component';
 import { PageNotFoundComponent } from './pages/page-not-found/page-not-found.component';
 import { TradeItemOverviewComponent } from './components/trade-item-overview/trade-item-overview.component';
 import { LoginComponent } from './components/login/login.component';
+import { TradeItemsComponent } from './components/trade-items/trade-items.component';
 
 @NgModule({
   declarations: [
@@ -44,6 +45,7 @@ import { LoginComponent } from './components/login/login.component';
     PageNotFoundComponent,
     TradeItemOverviewComponent,
     LoginComponent,
+    TradeItemsComponent,
   ],
   imports: [
     BrowserModule,
