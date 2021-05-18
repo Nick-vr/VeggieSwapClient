@@ -1,6 +1,6 @@
 <p-table #dt [columns]="cols" [value]="tradeItems" [paginator]="true" [rowsPerPageOptions]="[5,10,15,20]" [rows]="10"
-  styleClass="p-datatable-responsive-demo" [globalFilterFields]="['userFirstName','resourceName','amount']">
-
+  styleClass="p-datatable-responsive-demo" [globalFilterFields]="['userFirstName','resourceName','amount']"
+  selectionMode="none">
   <ng-template pTemplate="caption">
     <div class="p-s-flex">
       <span class="p-input-icon-left p-ml-auto">
@@ -10,22 +10,27 @@
       </span>
     </div>
   </ng-template>
-
   <ng-template pTemplate="header" let-columns>
     <tr>
+      <th></th>
       <th *ngFor="let col of columns">
         {{col.header}}
       </th>
     </tr>
   </ng-template>
-  <ng-template pTemplate="body" let-tradeItems let-columns="columns">
+  <ng-template pTemplate="body" let-tradeItem let-columns="columns">
     <tr>
-      <td *ngFor="let col of columns">
-        <div *ngIf="col.hasOwnProperty('imageUrl')">
-          <img src="../../../assets/images/veggies/{{tradeItems[col.imageUrl]}}" width="32" />
-        </div>
-        {{tradeItems[col.field]}}
+      <td>
+        <button routerLink="/home" routerLinkActive="router-link-active" type="button"
+          pTooltip="Swap with {{tradeItem.userFirstName}}" pButton pRipple icon="pi pi-search"
+          (click)="onRowClick($event)"></button>
       </td>
+      <td>{{tradeItem.userFirstName}}</td>
+      <td>
+        <img src="../../../assets/images/veggies/{{tradeItem.resourceImageUrl}}" width="32" />
+        {{tradeItem.resourceName | titlecase}}
+      </td>
+      <td>{{tradeItem.amount}}</td>
     </tr>
   </ng-template>
 </p-table>
