@@ -12,10 +12,11 @@ import { TabViewModule } from 'primeng/tabview';
 import { TableModule } from 'primeng/table';
 import { CardModule } from 'primeng/card';
 import { MultiSelectModule } from 'primeng/multiselect';
-import {ContextMenuModule} from 'primeng/contextmenu';
-import {DropdownModule} from 'primeng/dropdown';
-import {InputTextModule} from 'primeng/inputtext';
-import {ToastModule} from 'primeng/toast';
+import { ContextMenuModule } from 'primeng/contextmenu';
+import { DropdownModule } from 'primeng/dropdown';
+import { InputTextModule } from 'primeng/inputtext';
+import { ToastModule } from 'primeng/toast';
+import { PaginatorModule } from 'primeng/paginator';
 
 // Generated Components
 import { HeaderComponent } from './components/header/header.component';
@@ -62,6 +63,7 @@ import { TradeItemsComponent } from './components/trade-items/trade-items.compon
     DropdownModule,
     InputTextModule,
     ToastModule,
+    PaginatorModule,
   ],
   providers: [],
   bootstrap: [AppComponent]
