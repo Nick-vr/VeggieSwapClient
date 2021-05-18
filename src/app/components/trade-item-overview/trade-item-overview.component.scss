@@ -4,6 +4,11 @@
   }
 }
 
+.resource-wrap {
+  display: flex;
+  align-items: center;
+}
+
 @media screen and (max-width: 40rem) {
   :host ::ng-deep {
     .p-datatable {
@@ -14,7 +19,7 @@
         }
 
         .p-datatable-tbody > tr > td {
-          text-align: left;
+          text-align: center;
           display: block;
           width: 100%;
           float: left;
@@ -22,10 +27,10 @@
           border: 0 none;
 
           .p-column-title {
-            padding: 0.4rem;
+            //padding: 0.4rem;
             min-width: 30%;
             display: inline-block;
-            margin: -0.4em 1em -0.4em -0.4rem;
+            //margin: -0.4em 1em -0.4em -0.4rem;
             font-weight: bold;
           }
 
@@ -35,5 +40,9 @@
         }
       }
     }
+  }
+
+  .resource-wrap {
+    display: block;
   }
 }

@@ -17,6 +17,10 @@ import { DropdownModule } from 'primeng/dropdown';
 import { InputTextModule } from 'primeng/inputtext';
 import { ToastModule } from 'primeng/toast';
 import { PaginatorModule } from 'primeng/paginator';
+import { MessagesModule } from 'primeng/messages';
+import { MessageModule } from 'primeng/message';
+import { TooltipModule } from 'primeng/tooltip';
+import { DialogModule } from 'primeng/dialog';
 
 // Generated Components
 import { HeaderComponent } from './components/header/header.component';
@@ -30,7 +34,7 @@ import { RegisterComponent } from './components/register/register.component';
 import { PageNotFoundComponent } from './pages/page-not-found/page-not-found.component';
 import { TradeItemOverviewComponent } from './components/trade-item-overview/trade-item-overview.component';
 import { LoginComponent } from './components/login/login.component';
-import { TradeItemsComponent } from './components/trade-items/trade-items.component';
+import { UserDetailComponent } from './components/user-detail/user-detail.component';
 
 @NgModule({
   declarations: [
@@ -46,7 +50,7 @@ import { TradeItemsComponent } from './components/trade-items/trade-items.compon
     PageNotFoundComponent,
     TradeItemOverviewComponent,
     LoginComponent,
-    TradeItemsComponent,
+    UserDetailComponent,
   ],
   imports: [
     BrowserModule,
@@ -64,6 +68,10 @@ import { TradeItemsComponent } from './components/trade-items/trade-items.compon
     InputTextModule,
     ToastModule,
     PaginatorModule,
+    MessagesModule,
+    MessageModule,
+    TooltipModule,
+    DialogModule,
   ],
   providers: [],
   bootstrap: [AppComponent]
