@@ -1,5 +1,16 @@
-<p>trade-items works!</p>
-<p-table [columns]="cols" [value]="tradeItems" styleClass="p-datatable-responsive-demo">
+<p-table #dt [columns]="cols" [value]="tradeItems" [paginator]="true" [rowsPerPageOptions]="[5,10,15,20]" [rows]="10"
+  styleClass="p-datatable-responsive-demo" [globalFilterFields]="['userFirstName','resourceName','amount']">
+
+  <ng-template pTemplate="caption">
+    <div class="p-d-flex">
+      <span class="p-input-icon-left p-ml-auto">
+        <i class="pi pi-search"></i>
+        <input pInputText type="text" (input)="dt.filterGlobal($any($event.target).value, 'contains')"
+          placeholder="Search keyword" />
+      </span>
+    </div>
+  </ng-template>
+
   <ng-template pTemplate="header" let-columns>
     <tr>
       <th *ngFor="let col of columns">
@@ -10,7 +21,9 @@
   <ng-template pTemplate="body" let-tradeItems let-columns="columns">
     <tr>
       <td *ngFor="let col of columns">
-        <span class="p-column-title">{{col.header}}</span>
+        <div *ngIf="col.hasOwnProperty('imageUrl')">
+          <img src="../../../assets/images/veggies/{{tradeItems[col.imageUrl]}}" width="32" />
+        </div>
         {{tradeItems[col.field]}}
       </td>
     </tr>

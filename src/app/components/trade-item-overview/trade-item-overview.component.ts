@@ -1,31 +1,30 @@
 import { Component, OnInit, Input } from '@angular/core';
-import { Injectable } from '@angular/core';
 import { TradeItemOverviewService } from 'src/app/core/services/trade-item-overview.service';
 import { TradeItem, Resource } from 'src/app/core/interfaces/TradeItem';
-import { Table } from 'primeng/table';
 
 @Component({
   selector: 'app-trade-item-overview',
   templateUrl: './trade-item-overview.component.html',
   styleUrls: ['./trade-item-overview.component.scss']
 })
-@Injectable()
 export class TradeItemOverviewComponent implements OnInit {
 
   tradeItems: any[] = [];
   resources: Resource[] = [];
-  loading!: boolean;
-  totalRecords!: number
+  cols!: any[];
 
   constructor(private tradeItemOverviewService: TradeItemOverviewService) {}
 
   ngOnInit(): void {
-      this.getData();
+    this.getData();
+    this.cols = [
+        { field: 'userFirstName', header: 'Name' },
+        { field: 'resourceName', header: 'Resources', imageUrl: 'resourceImageUrl' },
+        { field: 'amount', header: 'Amount' }
+    ];
   }
 
-  clear(table: Table) {
-      table.clear();
-  }
+
 
   getData() {
       this.tradeItemOverviewService.getTradeItems().subscribe(x => this.tradeItems = x);

@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { TradeItem, Resource } from 'src/app/core/interfaces/TradeItem';
 import { TradeItemOverviewService } from 'src/app/core/services/trade-item-overview.service';
-import { Table } from 'primeng/table';
+import { TradeItem, Resource } from 'src/app/core/interfaces/TradeItem';
 
 @Component({
   selector: 'app-trade-items',
@@ -20,14 +19,11 @@ export class TradeItemsComponent implements OnInit {
     this.getData();
     this.cols = [
         { field: 'userFirstName', header: 'Name' },
-        { field: 'resourceName', header: 'Resources' },
+        { field: 'resourceName', header: 'Resources', imageUrl: 'resourceImageUrl' },
         { field: 'amount', header: 'Amount' }
     ];
   }
 
-  clear(table: Table) {
-    table.clear();
-  }
 
   getData() {
       this.tradeItemOverviewService.getTradeItems().subscribe(x => this.tradeItems = x);
