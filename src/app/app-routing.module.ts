@@ -6,6 +6,7 @@ import { PageNotFoundComponent } from './pages/page-not-found/page-not-found.com
 import { SignInComponent } from './pages/sign-in/sign-in.component';
 import { SwapNowComponent } from './pages/swap-now/swap-now.component';
 import { UserDetailComponent } from './components/user-detail/user-detail.component';
+import { TradeComponent } from './pages/trade/trade.component';
 
 const routes: Routes = [
   {path: '', redirectTo: '/home', pathMatch: 'full'},
@@ -14,6 +15,7 @@ const routes: Routes = [
   {path: 'swap-now', component: SwapNowComponent},
   {path: 'sign-in', component: SignInComponent},
   {path: 'user-detail/:id', component: UserDetailComponent},
+  {path: 'trade', component: TradeComponent},
   {path: '**', component: PageNotFoundComponent},
 ];
 
