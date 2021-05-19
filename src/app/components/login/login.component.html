@@ -1,1 +1,28 @@
-<p>login works!</p>
+<form #loginForm="ngForm"
+                  class="d-flex right"
+                  (ngSubmit)="login()"
+                  autocomplete="off"
+                  *ngIf= !loggedIn>
+
+                <input  name="Email"
+                        class="form-control me-2"
+                        [(ngModel)]="model.Email"
+                        type="text"
+                        placeholder="UserName" />
+
+
+                <input  name="password"
+                        class="form-control me-2"
+                        [(ngModel)]="model.password"
+                        type="password"
+                        placeholder="Password" />
+
+
+                <button class="btn btn-outline-success" type="submit">Login</button>
+</form>
+
+            <div *ngIf= loggedIn>
+                Welcome!
+                <button (click)="logout()"
+                        class="btn btn-outline-success">Log out</button>
+            </div>

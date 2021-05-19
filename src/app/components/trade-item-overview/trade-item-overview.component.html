@@ -1,94 +1,36 @@
-<!-- <button (click)="getData()">data</button> -->
-
-<div class="card">
-  <p-table #dt2 [value]="getResources()" dataKey="id" [rows]="10" [showCurrentPageReport]="true"
-    [rowsPerPageOptions]="[10,25,50]" [loading]="loading" [paginator]="true"
-    currentPageReportTemplate="Showing {first} to {last} of {totalRecords} entries"
-    [globalFilterFields]="['name','tradeItems.userFirstName','representative.name','status']">
-
-    <ng-template pTemplate="caption">
-      <div class="p-d-flex">
-        <span class="p-input-icon-left p-ml-auto">
-          <i class="pi pi-search"></i>
-          <input pInputText type="text" (input)="dt2.filterGlobal($any($event.target).value, 'contains')"
-            placeholder="Search keyword" />
-        </span>
-      </div>
-    </ng-template>
-
-    <ng-template pTemplate="header">
-      <tr>
-        <th>Name</th>
-        <th>Resource</th>
-        <th>Amount</th>
-        <th style="width: 6rem">Verified</th>
-      </tr>
-      <tr>
-        <th>
-          <p-columnFilter type="text" field="userFirstName"></p-columnFilter>
-        </th>
-        <th>
-          <p-columnFilter field="resource" matchMode="in" [showMenu]="false">
-            <ng-template pTemplate="filter" let-value let-filter="filterCallback">
-              <p-multiSelect [ngModel]="value" [options]="getResources()" placeholder="Any"
-                (onChange)="filter($event.value)" optionLabel="name">
-                <ng-template let-option pTemplate="item">
-                  <div class="p-multiselect-representative-option">
-                    <img [alt]="option.name" src="../../../assets/images/veggies/{{option.imageUrl}}.svg" width="32"
-                      style="vertical-align: middle" />
-                    <span class="p-ml-1">{{option.name}}</span>
-                  </div>
-                </ng-template>
-              </p-multiSelect>
-            </ng-template>
-          </p-columnFilter>
-        </th>
-        <th>
-          <p-columnFilter field="status" matchMode="equals" [showMenu]="false">
-            <ng-template pTemplate="filter" let-value let-filter="filterCallback">
-              <p-dropdown [ngModel]="value" [options]="getResources()" (onChange)="filter($event.value)"
-                placeholder="Any" [showClear]="true">
-                <ng-template let-option pTemplate="item">
-                  <span [class]="'customer-badge status-' + option.value">{{option.amount}}</span>
-                </ng-template>
-              </p-dropdown>
-            </ng-template>
-          </p-columnFilter>
-        </th>
-        <th>
-          <p-columnFilter type="boolean" field="verified"></p-columnFilter>
-        </th>
-      </tr>
-    </ng-template>
-    <ng-template pTemplate="body" let-customer>
-      <tr>
-        <td>
-          {{customer.name}}
-        </td>
-        <td>
-          <img src="../../../assets/images/veggies/asparaguses.svg" [class]="'flag flag-' + customer.country.code"
-            width="30">
-          <span class="image-text">{{customer.country.name}}</span>
-        </td>
-        <td>
-          <img [alt]="customer.representative.name"
-            src="assets/showcase/images/demo/avatar/{{customer.representative.image}}" width="32"
-            style="vertical-align: middle" />
-          <span class="image-text">{{customer.representative.name}}</span>
-        </td>
-        <td>
-          <span [class]="'customer-badge status-' + customer.status">{{customer.status}}</span>
-        </td>
-        <td>
-          <i class="pi"
-            [ngClass]="{'true-icon pi-check-circle': customer.verified, 'false-icon pi-times-circle': !customer.verified}"></i>
-        </td>
-      </tr>
-    </ng-template>
-    <ng-template pTemplate="emptymessage">
-      <tr>
-        <td colspan="5">No customers found.</td>
-      </tr>
-    </ng-template>
-  </p-table>
-</div>
+<p-table #dt [columns]="cols" [value]="tradeItems" [paginator]="true" [rowsPerPageOptions]="[5,10,15,20]" [rows]="10"
+  styleClass="p-datatable-responsive-demo" [globalFilterFields]="['userFirstName','resourceName','amount']"
+  selectionMode="none">
+  <ng-template pTemplate="caption">
+    <div class="p-s-flex">
+      <span class="p-input-icon-left p-ml-auto">
+        <i class="pi pi-search"></i>
+        <input pInputText type="text" (input)="dt.filterGlobal($any($event.target).value, 'contains')"
+          placeholder="Search keyword" />
+      </span>
+    </div>
+  </ng-template>
+  <ng-template pTemplate="header" let-columns>
+    <tr>
+      <th></th>
+      <th *ngFor="let col of columns">
+        {{col.header}}
+      </th>
+    </tr>
+  </ng-template>
+  <ng-template pTemplate="body" let-tradeItem let-columns="columns">
+    <tr>
+      <td>
+        <button routerLink="/home" routerLinkActive="router-link-active" type="button"
+          pTooltip="Swap with {{tradeItem.userFirstName}}" pButton pRipple icon="pi pi-search"
+          (click)="onRowClick($event)"></button>
+      </td>
+      <td>{{tradeItem.userFirstName}}</td>
+      <td>
+        <img src="../../../assets/images/veggies/{{tradeItem.resourceImageUrl}}" width="32" />
+        {{tradeItem.resourceName | titlecase}}
+      </td>
+      <td>{{tradeItem.amount}}</td>
+    </tr>
+  </ng-template>
+</p-table>
