@@ -1,3 +1,37 @@
+.home-banner {
+  background: url(../../../assets/images/banner.jpg);
+  width: 100%;
+  height: 40vh;
+  background-position: center -150px;
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-attachment: fixed;
+}
+
+.banner-text {
+  font-family: "Libre Baskerville", serif;
+  line-height: 3rem;
+  position: absolute;
+  top: 120px;
+  left: 20%;
+  width: 30vw;
+  text-align: justify;
+
+  @media (max-width: 1100px) {
+    top: 100px;
+    width: 60vw;
+  }
+
+  span {
+    background-color: var(--surface-b);
+    opacity: 0.8;
+
+    @media (max-width: 1000px) {
+      font-size: 1.5rem;
+    }
+  }
+}
+
 .card {
   margin: 0 10px;
 }
