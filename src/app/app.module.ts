@@ -21,6 +21,7 @@ import { MessagesModule } from 'primeng/messages';
 import { MessageModule } from 'primeng/message';
 import { TooltipModule } from 'primeng/tooltip';
 import { DialogModule } from 'primeng/dialog';
+import { PanelModule } from 'primeng/panel';
 
 // Generated Components
 import { HeaderComponent } from './components/header/header.component';
@@ -72,6 +73,7 @@ import { UserDetailComponent } from './components/user-detail/user-detail.compon
     MessageModule,
     TooltipModule,
     DialogModule,
+    PanelModule,
   ],
   providers: [],
   bootstrap: [AppComponent]
