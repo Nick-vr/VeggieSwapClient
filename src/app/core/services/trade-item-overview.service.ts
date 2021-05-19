@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
-import { TradeItem } from 'src/app/core/interfaces/TradeItem';
+import { TradeItem } from 'src/app/core/interfaces/tradeItem';
 import { Observable } from 'rxjs';
 
 @Injectable({
@@ -20,4 +20,10 @@ export class TradeItemOverviewService {
     let data = this.http.get<TradeItem[]>(this.endpoint);
     return data;
   }
+
+  getUserTradeItems(id: number): Observable<TradeItem[]> {
+    const url = `${this.endpoint}/${id}`;
+    return this.http.get<TradeItem[]>(url);
+  }
+
 }
