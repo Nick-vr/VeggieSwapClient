@@ -15,7 +15,7 @@ const routes: Routes = [
   {path: 'swap-now', component: SwapNowComponent},
   {path: 'sign-in', component: SignInComponent},
   {path: 'user-detail/:id', component: UserDetailComponent},
-  {path: 'trade', component: TradeComponent},
+  {path: 'trade/:id', component: TradeComponent},
   {path: '**', component: PageNotFoundComponent},
 ];
 
