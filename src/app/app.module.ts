@@ -35,6 +35,7 @@ import { PageNotFoundComponent } from './pages/page-not-found/page-not-found.com
 import { TradeItemOverviewComponent } from './components/trade-item-overview/trade-item-overview.component';
 import { LoginComponent } from './components/login/login.component';
 import { UserDetailComponent } from './components/user-detail/user-detail.component';
+import { TradeComponent } from './pages/trade/trade.component';
 
 @NgModule({
   declarations: [
@@ -51,6 +52,7 @@ import { UserDetailComponent } from './components/user-detail/user-detail.compon
     TradeItemOverviewComponent,
     LoginComponent,
     UserDetailComponent,
+    TradeComponent,
   ],
   imports: [
     BrowserModule,

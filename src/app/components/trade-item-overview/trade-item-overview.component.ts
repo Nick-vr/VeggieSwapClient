@@ -1,6 +1,6 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { TradeItemOverviewService } from 'src/app/core/services/trade-item-overview.service';
-import { TradeItem } from 'src/app/core/interfaces/tradeItem';
+import { TradeItem } from 'src/app/core/interfaces/TradeItem';
 
 @Component({
   selector: 'app-trade-item-overview',
