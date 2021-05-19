@@ -4,11 +4,17 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { FormsModule } from '@angular/forms';
+import { HttpClientModule } from '@angular/common/http';
 
 // PrimeNG Components
-import {ButtonModule} from 'primeng/button';
-import {TabViewModule} from 'primeng/tabview';
-import {CardModule} from 'primeng/card';
+import { ButtonModule } from 'primeng/button';
+import { TabViewModule } from 'primeng/tabview';
+import { TableModule } from 'primeng/table';
+import { CardModule } from 'primeng/card';
+import { MultiSelectModule } from 'primeng/multiselect';
+import {ContextMenuModule} from 'primeng/contextmenu';
+import {DropdownModule} from 'primeng/dropdown';
+import {InputTextModule} from 'primeng/inputtext';
 
 // Generated Components
 import { HeaderComponent } from './components/header/header.component';
@@ -20,7 +26,8 @@ import { HowItWorksComponent } from './pages/how-it-works/how-it-works.component
 import { SignInComponent } from './pages/sign-in/sign-in.component';
 import { RegisterComponent } from './components/register/register.component';
 import { PageNotFoundComponent } from './pages/page-not-found/page-not-found.component';
-import { UsertableComponent } from './components/usertable/usertable.component';
+import { TradeItemOverviewComponent } from './components/trade-item-overview/trade-item-overview.component';
+import { LoginComponent } from './components/login/login.component';
 
 @NgModule({
   declarations: [
@@ -34,16 +41,25 @@ import { UsertableComponent } from './components/usertable/usertable.component';
     SignInComponent,
     RegisterComponent,
     PageNotFoundComponent,
-    UsertableComponent
+    TradeItemOverviewComponent,
+    LoginComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     BrowserAnimationsModule,
     FormsModule,
+    HttpClientModule,
     ButtonModule,
     TabViewModule,
-    CardModule
+    TableModule,
+    CardModule,
+    MultiSelectModule,
+    ContextMenuModule,
+    DropdownModule,
+    InputTextModule,
+    
+
   ],
   providers: [],
   bootstrap: [AppComponent]
