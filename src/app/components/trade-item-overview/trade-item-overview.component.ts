@@ -33,10 +33,4 @@ export class TradeItemOverviewComponent implements OnInit {
   getTradeItems() {
     return this.tradeItems;
   }
-
-  onRowClick(event) {
-    //this.selectedTradeItem.push(userid)
-    //this.selectedTradeItem = this.tradeItems.
-    console.log(event);
-  }
 }

@@ -8,7 +8,8 @@
           <li>{{user.addressPostalCode}}, {{user.addressStreetName}}</li>
         </ul>
       </div>
-      <p-button label="Swap with {{user.firstName}}" icon="pi pi-check" iconPos="left"></p-button>
+      <p-button routerLink="/trade/{{user.id}}" label="Swap with {{user.firstName}}" icon="pi pi-check" iconPos="left">
+      </p-button>
     </div>
   </p-panel>
 
