@@ -1,7 +1,8 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
-import { ActiveUser } from '../ActiveUser';
+import { User } from '../interfaces/user';
+import { Register } from '../interfaces/register';
 import { map } from 'rxjs/operators';
 
 @Injectable({
@@ -9,50 +10,55 @@ import { map } from 'rxjs/operators';
 })
 export class AccountService {
   baseUrl = 'https://localhost:44360/api/account';
-  currentUser?: ActiveUser;
-  activeUser! : ActiveUser;
+
+  currentUser?: User;
 
   constructor(private httpClient: HttpClient) { }
 
-  login(model: any): Observable<any> {
+  login(model: User): Observable<any> {
     let url = `${this.baseUrl}/login`;
 
     return this.httpClient.post(url, model).pipe(
       map((response: any) => {
-        const activeUser: ActiveUser = response;
-        if (activeUser) {
-          localStorage.setItem('activeUser', JSON.stringify(activeUser));
-          this.setCurrentUser(activeUser);
-          
+
+        const loggedInUser: User = response;
+        if (loggedInUser) {
+          localStorage.setItem('loggedInUser', JSON.stringify(loggedInUser));
+          this.setCurrentUser(loggedInUser);
+
         }
       })
     );
   }
 
-  // register(model: Register): Observable<any> {
-  //   let url = 'https://localhost:44388/api/Account/Register';
-  //   return this.httpClient.post(url, model).pipe(
-  //     map((response: any) => {
-  //       const user: User = response;
-  //       if (user) {
-  //         localStorage.setItem('user', JSON.stringify(user));
-  //         this.setCurrentUser(user);
-  //       }
-  //     })
-  //   );
-  // }
 
-  setCurrentUser(activeUser: ActiveUser) {
-    this.currentUser = activeUser;
-    this.activeUser = activeUser;
+  register(model: Register): Observable<any> {
+    let url = 'https://localhost:44360/api/Account/Register';
+    return this.httpClient.post(url, model).pipe(
+      map((response: any) => {
+        const loggedInUser: User = response;
+        if (loggedInUser) {
+          localStorage.setItem('loggedInUser', JSON.stringify(loggedInUser));
+          this.setCurrentUser(loggedInUser);
+        }
+      })
+    );
   }
 
-  getCurrentUser(): ActiveUser  {
-    return this.activeUser;
+  setCurrentUser(loggedInUser: User) {
+    this.currentUser = loggedInUser;
+  }
+
+  getCurrentUser(): User | undefined {
+    if (this.currentUser) {
+      return this.currentUser;
+    }
+    return undefined;
   }
 
   logout() {
-    localStorage.removeItem('activeUser');
+    localStorage.removeItem('loggedInUser');
+
     this.currentUser = undefined;
   }
 }
