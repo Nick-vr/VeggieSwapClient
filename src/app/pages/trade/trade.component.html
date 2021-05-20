@@ -1,57 +1,50 @@
 
-<div class="p-grid nested-grid" style="background-color: rgb(48, 184, 184); height: 87vh;">
-    <div class="p-col-3" style="background-color: red; min-width:200px">
-        user
-        
-    </div>
-    <div class="p-col-6  " style="background-color: green; min-width:300px;" >
-        
-          
-<div class="p-grid"   style="height: 23%;" >
-    <div class="p-col-4" style="background-color: lightblue; min-width:100px; align-self: center;">
-        
-        <div>
-            {{user.firstName}} {{user.lastName}}:
-            <ul>
-              <li>{{user.addressPostalCode}}, {{user.addressStreetName}}</li>
-            </ul>
+
+    <div class="p-grid">
+        <div class="p-col-12"  style="background-color: lightblue;"> 
+            <div>
+                <button pButton pRipple label="Confirm" icon="pi pi-check"></button>
+                <button pButton pRipple label="Cancel" icon="pi pi-times" class="p-button-raised p-button-danger"></button>
+            </div>
         </div>
 
-    </div>
-    <div class="p-col-4"  style="background-color: lightcoral; min-width:100px ; align-self: center;">
-
-        <div>
-            <button pButton pRipple label="Confirm" icon="pi pi-check"></button>
-            <button pButton pRipple label="Cancel" icon="pi pi-times" class="p-button-raised p-button-danger"></button>
-        </div>
+    <div class="p-col-12 p-md-6">
+        <div  class="p-col-12 " style="background-color: lightgreen;">
         
-    </div>
-    <div class="p-col-4"  style="background-color: lightgreen; min-width:100px; align-self: center;">
-        <div>
-            {{receiver.firstName}} {{receiver.lastName}}:
-            <ul>
-               <li>{{receiver.addressPostalCode}}, {{receiver.addressStreetName}}</li>
-            </ul>
+            <div>
+                {{user.firstName}} {{user.lastName}}:
+                <ul>
+                  <li>{{user.addressPostalCode}}, {{user.addressStreetName}}</li>
+                </ul>
+            </div>
+            
         </div>
+        <div  class="p-col-12 " style="background-color: lightsalmon;">left bottom</div>
     </div>
 
-</div>
-
-
-<div class="p-grid" style="height: 80%;" >
-    <div class="p-col-6" style="background-color: lightskyblue; ">
+    <div class="p-col-12 p-md-6">
+        <div class="p-col-12 " style="background-color: lightseagreen;">
         
-        Proposals
+            <div>
+                {{receiver.firstName}} {{receiver.lastName}}:
+                <ul>
+                   <li>{{receiver.addressPostalCode}}, {{receiver.addressStreetName}}</li>
+                </ul>
+            </div>
+        
+        </div>
+        <div class="p-col-12 "style="background-color: yellowgreen;">right bottom</div>
     </div>
-    <div class="p-col-6" style="background-color: lightpink; ;">
-       
-        Proposals
+
     </div>
-</div>
-    </div>
-    <div class="p-col-3">
-        User 2 tradeitems
-    </div>
-</div>
+
+
+
+
+
+
+
+
+
 
 
