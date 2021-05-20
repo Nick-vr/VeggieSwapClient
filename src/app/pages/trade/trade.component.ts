@@ -3,8 +3,7 @@ import { TradeItemOverviewService } from 'src/app/core/services/trade-item-overv
 import { UserService } from 'src/app/core/services/user.service';
 import { TradeItem } from 'src/app/core/interfaces/tradeItem';
 import { User } from 'src/app/core/interfaces/user';
-import { Observable } from 'rxjs';
-import { AccountService } from 'src/app/core/services/account.service';
+import { ActivatedRoute } from '@angular/router';
 
 
 @Component({
@@ -13,30 +12,42 @@ import { AccountService } from 'src/app/core/services/account.service';
   styleUrls: ['./trade.component.scss']
 })
 export class TradeComponent implements OnInit {
-
-  user!: string | null
-  reviver! : User
-  receiver?:  Observable<User>;
-
+  
+  //ID from localstorage cached User (logged in user)
+  CacheUserId! : number;
+  // Users objects, collected from the database
+  user! : User;
+  receiver!:  User;
+  // Users - tradeitem lists (what they sell), collected from the database
   userTradeItems?: TradeItem[];
   receiverTradeItems?: TradeItem[];
-
+  // Lists of proposed tradeitems, picked on the page, to be returned to the backend
   userProposedItems?: TradeItem[];
   receiverProposedItems?: TradeItem[];
 
-  constructor(private tradeItemOverviewService: TradeItemOverviewService, private userService: UserService, private accountService:  AccountService) { }
+  constructor(
+    private tradeItemOverviewService: TradeItemOverviewService, 
+    private userService: UserService, 
+    private route: ActivatedRoute,) { }
 
   ngOnInit(): void {
-
-    let iets: User = JSON.parse(localStorage.getItem('loggedInUser') || '{}');
-
+    this.getCurrentUserId();
+    this.getUsers();
+    this.getTradeItemLists();
+  }
+  
+  getCurrentUserId() {
+    let CacheUser: User = JSON.parse(localStorage.getItem('loggedInUser') || '{}');
+    this.CacheUserId = CacheUser.id || 0;
+  }
+  
+  getUsers() {
+    this.userService.getUser(this.CacheUserId || 0).subscribe(x => (this.user = x));
+    this.userService.getUser(Number(this.route.snapshot.paramMap.get('id'))).subscribe(x => (this.receiver = x));
   }
 
-  getTradeItems(id  :number) : Observable<TradeItem[]>{ // TO do= replace 'observable to .subscrib 
-    return this.tradeItemOverviewService.getUserTradeItems(id);
-  }
-
-  getUser(id  :number) : Observable<User>{
-    return this.userService.getUser(id);
+  getTradeItemLists()  { 
+   this.tradeItemOverviewService.getUserTradeItems(this.user.id || 0).subscribe(x => (this.userTradeItems = x));
+   this.tradeItemOverviewService.getUserTradeItems(this.receiver.id || 0).subscribe(x => (this.userTradeItems = x));
   }
 }
