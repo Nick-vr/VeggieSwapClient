@@ -4,7 +4,9 @@ import { UserService } from 'src/app/core/services/user.service';
 import { TradeItem } from 'src/app/core/interfaces/tradeItem';
 import { User } from 'src/app/core/interfaces/user';
 import { ActivatedRoute } from '@angular/router';
+
 import { ButtonModule } from 'primeng/button';
+import { PickListModule } from 'primeng/picklist';
 
 @Component({
   selector: 'app-trade',
@@ -29,7 +31,9 @@ export class TradeComponent implements OnInit {
     private tradeItemOverviewService: TradeItemOverviewService, 
     private userService: UserService, 
     private route: ActivatedRoute,
+    
     private button: ButtonModule,
+    private picklist: PickListModule,
     ) { }
 
   ngOnInit(): void {

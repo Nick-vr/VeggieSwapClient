@@ -3,8 +3,19 @@
 //   }
 // }
 
+.button {
+  margin: 12px;
+  padding: 10px;
+}
+
+
 .grid-height {
   min-height: 80vh;
+}
+
+.center {
+  text-align: center;
+  align-items: center;
 }
 
 // .mid-stretch {
