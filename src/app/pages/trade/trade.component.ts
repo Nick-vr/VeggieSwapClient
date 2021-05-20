@@ -15,12 +15,16 @@ import { AccountService } from 'src/app/core/services/account.service';
 })
 export class TradeComponent implements OnInit {
 
-  user!: string | null
-  reviver! : ActiveUser
+  
+
+  user?:  Observable<User>;
   receiver?:  Observable<User>;
-  proposer?:  Observable<User>;
+
+  userTradeItems?: TradeItem[];
   receiverTradeItems?: TradeItem[];
-  proposerTradeItems?: TradeItem[];
+
+  userProposedItems?: TradeItem[];
+  receiverProposedItems?: TradeItem[];
 
   constructor(private tradeItemOverviewService: TradeItemOverviewService, private userService: UserService, private accountService:  AccountService) { }
 
@@ -30,7 +34,7 @@ export class TradeComponent implements OnInit {
     
   }
 
-  getTradeItems(id  :number) : Observable<TradeItem[]>{
+  getTradeItems(id  :number) : Observable<TradeItem[]>{ // TO do= replace 'observable to .subscrib 
     return this.tradeItemOverviewService.getUserTradeItems(id);
   }
 

@@ -21,9 +21,9 @@
   <ng-template pTemplate="body" let-tradeItem let-columns="columns">
     <tr>
       <td>
-        <button routerLink="/user-detail/{{tradeItem.id}}" routerLinkActive="router-link-active" type="button"
+        <button routerLink="/user-detail/{{tradeItem.userId}}" type="button"
           pTooltip="Swap with {{tradeItem.userFirstName}}" pButton pRipple icon="pi pi-search"
-          (click)="onRowClick($event)"></button>
+          ></button>
       </td>
       <td>{{tradeItem.userFirstName}}</td>
       <td>
