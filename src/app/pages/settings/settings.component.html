@@ -1,5 +1,13 @@
 <section>
-  <p-panel header="Title">
-    Content
+  <p-panel header="Hello {{currentUser?.firstName}}, here you can edit your profile.">
+    <div class="panel-content">
+      <!-- <p-menu [model]="items"></p-menu> -->
+      <div class="p-field">
+        <label for="firstname">First Name</label>
+        <input id="firstname" type="username" aria-describedby="username1-help" pInputText
+          [(ngModel)]="currentUser?.firstName || firstName" />
+      </div>
+
+    </div>
   </p-panel>
 </section>
