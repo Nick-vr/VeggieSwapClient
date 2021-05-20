@@ -4,7 +4,7 @@ import { UserService } from 'src/app/core/services/user.service';
 import { TradeItem } from 'src/app/core/interfaces/tradeItem';
 import { User } from 'src/app/core/interfaces/user';
 import { ActivatedRoute } from '@angular/router';
-
+import { ButtonModule } from 'primeng/button';
 
 @Component({
   selector: 'app-trade',
@@ -28,7 +28,9 @@ export class TradeComponent implements OnInit {
   constructor(
     private tradeItemOverviewService: TradeItemOverviewService, 
     private userService: UserService, 
-    private route: ActivatedRoute,) { }
+    private route: ActivatedRoute,
+    private button: ButtonModule,
+    ) { }
 
   ngOnInit(): void {
     this.getCurrentUserId();
