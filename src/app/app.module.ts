@@ -3,7 +3,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { FormsModule, ReactiveFormsModule  } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 
 // PrimeNG Components
@@ -23,6 +23,7 @@ import { TooltipModule } from 'primeng/tooltip';
 import { DialogModule } from 'primeng/dialog';
 import { PanelModule } from 'primeng/panel';
 import { GMapModule } from 'primeng/gmap';
+import { MenuModule } from 'primeng/menu';
 
 // Generated Components
 import { HeaderComponent } from './components/header/header.component';
@@ -39,8 +40,6 @@ import { UserDetailComponent } from './components/user-detail/user-detail.compon
 import { TradeComponent } from './pages/trade/trade.component';
 import { UserTradeItemsComponent } from './components/user-trade-items/user-trade-items.component';
 import { SettingsComponent } from './pages/settings/settings.component';
-
-
 
 @NgModule({
   declarations: [
@@ -82,9 +81,10 @@ import { SettingsComponent } from './pages/settings/settings.component';
     DialogModule,
     PanelModule,
     GMapModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    MenuModule,
   ],
   providers: [],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
 })
-export class AppModule { }
+export class AppModule {}
