@@ -4,7 +4,6 @@ import { UserService } from 'src/app/core/services/user.service';
 import { TradeItem } from 'src/app/core/interfaces/tradeItem';
 import { User } from 'src/app/core/interfaces/user';
 import { Observable } from 'rxjs';
-import { ActiveUser} from 'src/app/core/ActiveUser'
 import { AccountService } from 'src/app/core/services/account.service';
 
 
@@ -15,9 +14,8 @@ import { AccountService } from 'src/app/core/services/account.service';
 })
 export class TradeComponent implements OnInit {
 
-  
-
-  user?:  Observable<User>;
+  user!: string | null
+  reviver! : User
   receiver?:  Observable<User>;
 
   userTradeItems?: TradeItem[];
@@ -30,8 +28,8 @@ export class TradeComponent implements OnInit {
 
   ngOnInit(): void {
 
-    let iets: ActiveUser = JSON.parse(localStorage.getItem('activeUser') || '{}');
-    
+    let iets: User = JSON.parse(localStorage.getItem('loggedInUser') || '{}');
+
   }
 
   getTradeItems(id  :number) : Observable<TradeItem[]>{ // TO do= replace 'observable to .subscrib 
@@ -41,10 +39,4 @@ export class TradeComponent implements OnInit {
   getUser(id  :number) : Observable<User>{
     return this.userService.getUser(id);
   }
-
-  getCurrentUser(): ActiveUser {
-
-    return this.accountService.activeUser;
-  }
-
 }
