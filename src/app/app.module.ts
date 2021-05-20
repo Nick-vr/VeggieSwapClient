@@ -30,7 +30,6 @@ import { FooterComponent } from './components/footer/footer.component';
 import { HomeComponent } from './pages/home/home.component';
 import { NavigationComponent } from './components/navigation/navigation.component';
 import { SwapNowComponent } from './pages/swap-now/swap-now.component';
-import { HowItWorksComponent } from './pages/how-it-works/how-it-works.component';
 import { SignInComponent } from './pages/sign-in/sign-in.component';
 import { RegisterComponent } from './components/register/register.component';
 import { PageNotFoundComponent } from './pages/page-not-found/page-not-found.component';
@@ -39,6 +38,7 @@ import { LoginComponent } from './components/login/login.component';
 import { UserDetailComponent } from './components/user-detail/user-detail.component';
 import { TradeComponent } from './pages/trade/trade.component';
 import { UserTradeItemsComponent } from './components/user-trade-items/user-trade-items.component';
+import { SettingsComponent } from './pages/settings/settings.component';
 
 @NgModule({
   declarations: [
@@ -48,7 +48,6 @@ import { UserTradeItemsComponent } from './components/user-trade-items/user-trad
     HomeComponent,
     NavigationComponent,
     SwapNowComponent,
-    HowItWorksComponent,
     SignInComponent,
     RegisterComponent,
     PageNotFoundComponent,
@@ -57,6 +56,7 @@ import { UserTradeItemsComponent } from './components/user-trade-items/user-trad
     UserDetailComponent,
     TradeComponent,
     UserTradeItemsComponent,
+    SettingsComponent,
   ],
   imports: [
     BrowserModule,
