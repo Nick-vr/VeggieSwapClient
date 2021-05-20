@@ -3,7 +3,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule  } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 
 // PrimeNG Components
@@ -37,6 +37,8 @@ import { PageNotFoundComponent } from './pages/page-not-found/page-not-found.com
 import { TradeItemOverviewComponent } from './components/trade-item-overview/trade-item-overview.component';
 import { LoginComponent } from './components/login/login.component';
 import { UserDetailComponent } from './components/user-detail/user-detail.component';
+
+
 
 @NgModule({
   declarations: [
@@ -76,6 +78,7 @@ import { UserDetailComponent } from './components/user-detail/user-detail.compon
     DialogModule,
     PanelModule,
     GMapModule,
+    ReactiveFormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]
