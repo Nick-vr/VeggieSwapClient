@@ -10,7 +10,9 @@ import { map } from 'rxjs/operators';
 })
 export class AccountService {
   baseUrl = 'https://localhost:44360/api/account';
+
   currentUser?: User;
+
   constructor(private httpClient: HttpClient) { }
 
   login(model: User): Observable<any> {
@@ -18,14 +20,17 @@ export class AccountService {
 
     return this.httpClient.post(url, model).pipe(
       map((response: any) => {
+
         const loggedInUser: User = response;
         if (loggedInUser) {
           localStorage.setItem('loggedInUser', JSON.stringify(loggedInUser));
           this.setCurrentUser(loggedInUser);
+
         }
       })
     );
   }
+
 
   register(model: Register): Observable<any> {
     let url = 'https://localhost:44360/api/Account/Register';
@@ -53,6 +58,7 @@ export class AccountService {
 
   logout() {
     localStorage.removeItem('loggedInUser');
+
     this.currentUser = undefined;
   }
 }

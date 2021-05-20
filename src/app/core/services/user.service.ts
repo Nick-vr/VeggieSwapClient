@@ -33,7 +33,8 @@ export class UserService {
     return this.http.put(this.userEndpoint, user, this.httpOptions);
   }
 
-  deleteHero(user: User): Observable<User> {
+
+  deleteUser(user: User): Observable<User> {
     const url = `${this.userEndpoint}/${user.id}`;
     return this.http.delete<User>(url, this.httpOptions);
   };
