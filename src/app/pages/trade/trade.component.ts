@@ -5,9 +5,6 @@ import { TradeItem } from 'src/app/core/interfaces/tradeItem';
 import { User } from 'src/app/core/interfaces/user';
 import { ActivatedRoute } from '@angular/router';
 
-import { ButtonModule } from 'primeng/button';
-import { PickListModule } from 'primeng/picklist';
-
 @Component({
   selector: 'app-trade',
   templateUrl: './trade.component.html',
@@ -32,8 +29,6 @@ export class TradeComponent implements OnInit {
     private userService: UserService, 
     private route: ActivatedRoute,
     
-    private button: ButtonModule,
-    private picklist: PickListModule,
     ) { }
 
   ngOnInit(): void {
