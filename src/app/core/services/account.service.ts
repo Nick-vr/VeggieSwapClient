@@ -6,31 +6,28 @@ import { Register } from '../interfaces/register';
 import { map } from 'rxjs/operators';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class AccountService {
   baseUrl = 'https://localhost:44360/api/account';
 
   currentUser?: User;
 
-  constructor(private httpClient: HttpClient) { }
+  constructor(private httpClient: HttpClient) {}
 
   login(model: User): Observable<any> {
     let url = `${this.baseUrl}/login`;
 
     return this.httpClient.post(url, model).pipe(
       map((response: any) => {
-
         const loggedInUser: User = response;
         if (loggedInUser) {
           localStorage.setItem('loggedInUser', JSON.stringify(loggedInUser));
           this.setCurrentUser(loggedInUser);
-
         }
       })
     );
   }
-
 
   register(model: Register): Observable<any> {
     let url = 'https://localhost:44360/api/Account/Register';

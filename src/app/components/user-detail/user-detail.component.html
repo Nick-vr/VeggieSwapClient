@@ -1,14 +1,15 @@
 <section>
 
-  <p-panel header="{{user.firstName}} {{user.lastName}}'s trade items">
+  <p-panel header="{{user?.firstName}} {{user?.lastName}}'s trade items">
     <div class="user-info">
       <div>
         <ul>
-          <li>{{user.email}}</li>
-          <li>{{user.addressPostalCode}}, {{user.addressStreetName}}</li>
+          <li>{{user?.email}}</li>
+          <li>{{user?.addressPostalCode}}, {{user?.addressStreetName}}</li>
         </ul>
       </div>
-      <p-button routerLink="/trade/{{user.id}}" label="Swap with {{user.firstName}}" icon="pi pi-check" iconPos="left">
+      <p-button routerLink="/trade/{{user?.id}}" label="Swap with {{user?.firstName}}" icon="pi pi-check"
+        iconPos="left">
       </p-button>
     </div>
   </p-panel>
