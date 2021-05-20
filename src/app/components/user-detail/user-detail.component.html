@@ -1,3 +1,28 @@
-<p-panel header="Title">
-  Content
-</p-panel>
+<section>
+
+  <p-panel header="{{user.firstName}} {{user.lastName}}'s trade items">
+    <div class="user-info">
+      <div>
+        <ul>
+          <li>{{user.email}}</li>
+          <li>{{user.addressPostalCode}}, {{user.addressStreetName}}</li>
+        </ul>
+      </div>
+
+      <p-button label="Swap with {{user.firstName}}" icon="pi pi-check" iconPos="left"></p-button>
+
+    </div>
+  </p-panel>
+
+  <div class="user-tradeable-items">
+    <div *ngFor="let tradeItem of tradeItems">
+      <p-card header="{{tradeItem.resourceName | titlecase}}" styleClass="p-card-override">
+        <ng-template pTemplate="header">
+          <img alt="Card" src="../../../assets/images/veggies/{{tradeItem.resourceImageUrl}}">
+        </ng-template>
+        <p>Amount available: {{tradeItem.amount}}</p>
+      </p-card>
+    </div>
+  </div>
+
+</section>

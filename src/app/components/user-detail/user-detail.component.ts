@@ -2,7 +2,9 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { Location } from '@angular/common';
 import { User } from '../../core/interfaces/user'
+import { TradeItem } from '../../core/interfaces/tradeItem'
 import { UserService } from '../../core/services/user.service'
+import { TradeItemsService } from 'src/app/core/services/trade-items.service';
 
 @Component({
   selector: 'app-user-detail',
@@ -12,14 +14,18 @@ import { UserService } from '../../core/services/user.service'
 export class UserDetailComponent implements OnInit {
 
   user!: User;
+  tradeItems!: TradeItem[];
 
   constructor(
     private route: ActivatedRoute,
     private location: Location,
     private userService: UserService,
+    private tradeItemsService: TradeItemsService,
   ) { }
 
   ngOnInit(): void {
+    this.getUser();
+    this.getTradeItemsFromSelectedUser();
   }
 
   getUser(): void{
@@ -31,5 +37,11 @@ export class UserDetailComponent implements OnInit {
   save(): void{
     this.userService.updateUser(this.user)
       .subscribe()
+  }
+
+  getTradeItemsFromSelectedUser(): void{
+    const id = Number(this.route.snapshot.paramMap.get('id'));
+    this.tradeItemsService.getTradeItemsFromSelectedUser(id)
+      .subscribe(tradeItems => this.tradeItems = tradeItems);
   }
 }

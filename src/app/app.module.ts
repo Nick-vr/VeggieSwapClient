@@ -22,6 +22,7 @@ import { MessageModule } from 'primeng/message';
 import { TooltipModule } from 'primeng/tooltip';
 import { DialogModule } from 'primeng/dialog';
 import { PanelModule } from 'primeng/panel';
+import { GMapModule } from 'primeng/gmap';
 
 // Generated Components
 import { HeaderComponent } from './components/header/header.component';
@@ -78,6 +79,7 @@ import { UserTradeItemsComponent } from './components/user-trade-items/user-trad
     TooltipModule,
     DialogModule,
     PanelModule,
+    GMapModule,
   ],
   providers: [],
   bootstrap: [AppComponent]
