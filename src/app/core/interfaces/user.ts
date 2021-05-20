@@ -9,5 +9,6 @@ export interface User{
   addressPostalCode?: number,
   walletId?: number,
   imageUrl?: string,
-  isAdmin?: boolean
+  isAdmin?: boolean,
+  token?: string,
 }
