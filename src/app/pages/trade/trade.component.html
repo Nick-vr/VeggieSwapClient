@@ -1,31 +1,69 @@
-<div class="p-grid grid-height">
-    <div class="p-col-3">
-        <app-user-trade-items></app-user-trade-items>
-        User 1
-    </div>
-    <div class="p-col-6">
-        <div class="p-grid p-ai-stretch vertical-container ">
-            <div class="p-col-4 box box-stretched">
-                User1 mid top
-            </div>
-            <div class="p-col-4 box box-stretched">
-                Cancel - Propose
-            </div>
-            <div class="p-col-4 box box-stretched">
-                User2 mid top
+    <div class="p-grid">
+
+        <div class="p-col-12"  style="background-color: lightblue;"> 
+            <div class="vg-center">
+               
+                <button onclick="getTradeItemLists()" pButton pRipple class="button" label="Confirm" icon="pi pi-check"></button>
+                <button pButton pRipple class="button p-button-raised p-button-danger" label="Cancel" icon="pi pi-times"></button>
             </div>
         </div>
-        <div class="p-grid p-ai-stretch vertical-container">
-            <div class="p-col-6 box box-stretched">
-                <p>User1 items</p>
+
+        <div class="p-col-12 p-md-6">
+            <div  class="p-col-12 " style="background-color: lightgreen;">
+        
+            <div>
+                {{user.firstName}} {{user.lastName}}:
+                <ul>
+                  <li>{{user.addressPostalCode}}, {{user.addressStreetName}}</li>
+                </ul>
             </div>
-            <div class="p-col-6 box box-stretched">
-                <p>User2 items</p>
+            
             </div>
+
+            <div  class="p-col-12" style="background-color: lightsalmon;">
+
+                <ul>
+                    <li *ngFor="let tradeItem of userTradeItems" >
+                        {{tradeItem.resourceName | titlecase}}
+                    </li>
+                </ul>
+
+                
+            </div>
+
         </div>
+
+        <div class="p-col-12 p-md-6">
+            <div class="p-col-12 " style="background-color: lightseagreen;">
+        
+                <div>
+                    {{receiver.firstName}} {{receiver.lastName}}:
+                    <ul>
+                    <li>{{receiver.addressPostalCode}}, {{receiver.addressStreetName}}</li>
+                    </ul>
+                </div>
+        
+            </div>
+
+            <div class="p-col-12 "style="background-color: yellowgreen;">
+                <ul>
+                    <li *ngFor="let tradeItem of receiverTradeItems" >
+                        {{tradeItem.resourceName | titlecase}}
+                    </li>
+                </ul>
+            </div>
+
+        </div>
+
     </div>
-    <div class="p-col-3">
-        <app-user-trade-items></app-user-trade-items>
-        User 2
-    </div>
-</div>
+
+
+
+
+
+
+
+
+
+
+

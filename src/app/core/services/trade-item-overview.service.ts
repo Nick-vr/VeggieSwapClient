@@ -20,7 +20,7 @@ export class TradeItemOverviewService {
   }
 
   getUserTradeItems(id: number): Observable<TradeItem[]> {
-    const url = `${this.endpoint}/${id}`;
-    return this.http.get<TradeItem[]>(url);
+    const url = `${this.endpoint}/${id}`
+    return this.http.get<TradeItem[]>(url, this.httpOptions);
   }
 }

@@ -8,7 +8,7 @@ import { TradeItem } from '../interfaces/tradeItem';
 })
 export class TradeItemsService {
 
-  private tradeItemEndpoint = 'https://localhost:44360/api/TradeItem/detail-list'
+  private tradeItemEndpoint = 'https://localhost:44360/api/TradeItem'
 
   httpOptions = {
     headers: new HttpHeaders({ 'Content-Type': 'application/json' })

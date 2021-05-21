@@ -9,7 +9,9 @@ import { AccountService } from '../../core/services/account.service';
 export class LoginComponent implements OnInit {
   model: any = {};
   loggedIn: boolean = false;
-  constructor(private accountService: AccountService) {}
+  errorMessages: any | undefined;
+
+  constructor(private accountService: AccountService) { }
 
   ngOnInit(): void {}
 
@@ -20,8 +22,8 @@ export class LoginComponent implements OnInit {
       },
       (error) => {
         console.log(error);
-      }
-    );
+        this.errorMessages = error.error;
+      });
   }
 
   logout() {

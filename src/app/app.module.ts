@@ -23,6 +23,7 @@ import { TooltipModule } from 'primeng/tooltip';
 import { DialogModule } from 'primeng/dialog';
 import { PanelModule } from 'primeng/panel';
 import { GMapModule } from 'primeng/gmap';
+import { PickListModule } from 'primeng/picklist';
 import { MenuModule } from 'primeng/menu';
 
 // Generated Components
@@ -82,7 +83,8 @@ import { SettingsComponent } from './pages/settings/settings.component';
     PanelModule,
     GMapModule,
     ReactiveFormsModule,
-    MenuModule,
+    PickListModule,
+    MenuModule
   ],
   providers: [],
   bootstrap: [AppComponent],
