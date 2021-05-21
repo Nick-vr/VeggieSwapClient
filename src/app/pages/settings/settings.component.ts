@@ -20,7 +20,6 @@ export class SettingsComponent implements OnInit {
   currentUser: User | undefined;
   editProfileForm!: FormGroup;
   msgs: Message[] = [];
-  //avatar = `https://robohash.org/${this.currentUser!.firstName}`;
 
   constructor(
     private userService: UserService,
