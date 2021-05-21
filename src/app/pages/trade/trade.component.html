@@ -1,56 +1,99 @@
     <div class="p-grid">
-
-        <div class="p-col-12"  style="background-color: lightblue;"> 
-            <div class="vg-center">
-               
-                <button onclick="getTradeItemLists()" pButton pRipple class="button" label="Confirm" icon="pi pi-check"></button>
-                <button pButton pRipple class="button p-button-raised p-button-danger" label="Cancel" icon="pi pi-times"></button>
-            </div>
-        </div>
+        <div class="p-col-12 vg-center"> 
+            <span class="p-buttonset" >
+                <button pButton type="button" label=" Confirm Trade " icon="pi pi-check" class="p-button-raised p-button-rounded" Style="font-size: 1.4rem;"></button>
+                <button pButton type="button" label=" Reset " icon="pi pi-trash" class="p-button-raised p-button-rounded" Style="font-size: 1.4rem;"></button>
+                <button pButton type="button" label=" Cancel Trade " icon="pi pi-times" class="p-button-raised p-button-rounded" Style="font-size: 1.4rem;"></button>
+            </span>
+        </div>  
 
         <div class="p-col-12 p-md-6">
-            <div  class="p-col-12 " style="background-color: lightgreen;">
-        
-            <div>
-                {{user.firstName}} {{user.lastName}}:
-                <ul>
-                  <li>{{user.addressPostalCode}}, {{user.addressStreetName}}</li>
-                </ul>
-            </div>
             
-            </div>
 
-            <div  class="p-col-12" style="background-color: lightsalmon;">
+            <div  class="p-col-12">
 
-                <ul>
-                    <li *ngFor="let tradeItem of userTradeItems" >
-                        {{tradeItem.resourceName | titlecase}}
-                    </li>
-                </ul>
 
-                
+                <p-pickList [source]="userTradeItems" [target]="userProposedItems" targetHeader="{{user.firstName}} {{user.lastName}}'s veggies" [dragdrop]="true"
+                            [responsive]="true" [sourceStyle]="{'height':'30rem'}" [targetStyle]="{'height':'31.1rem'}" filterBy="resourceName"
+                            sourceFilterPlaceholder="Search by name" [showTargetFilter]="false" [showSourceControls]="false" [showTargetControls]="false" >
+
+                    <ng-template let-tradeItem pTemplate="product">
+                        
+                         <div class="product-item">
+                            <div class="image-container">
+                                <img src="../../../assets/images/veggies/{{tradeItem.resourceImageUrl}}">
+                            </div>
+
+                            <div class="wrapper">
+                                <div class="product-list-detail" style="font-size: 1.1rem;">
+                                    <div class="wrapper-horizontal">
+                                        <p>
+                                            {{tradeItem.resourceName | titlecase}}
+                                        </p>
+                                        <div>
+                                            {{tradeItem.amount}}
+                                            &nbsp;
+
+                                            <p class="pi pi-tag" >
+                                            </p>
+                                        </div>
+                                    </div>
+                                </div>
+
+                            <div class="product-list-detail"  style="margin-bottom: 0.7rem; margin-top: 0px;">
+                                <p-inputNumber [(ngModel)]="tradeItem.proposedAmount"></p-inputNumber>
+                                </div>
+                            </div>
+                        </div>
+                    </ng-template>
+                </p-pickList>
+
             </div>
 
         </div>
 
         <div class="p-col-12 p-md-6">
-            <div class="p-col-12 " style="background-color: lightseagreen;">
-        
-                <div>
-                    {{receiver.firstName}} {{receiver.lastName}}:
-                    <ul>
-                    <li>{{receiver.addressPostalCode}}, {{receiver.addressStreetName}}</li>
-                    </ul>
-                </div>
-        
-            </div>
+            
 
-            <div class="p-col-12 "style="background-color: yellowgreen;">
-                <ul>
-                    <li *ngFor="let tradeItem of receiverTradeItems" >
-                        {{tradeItem.resourceName | titlecase}}
-                    </li>
-                </ul>
+            <div class="p-col-12">
+
+                    
+                <p-pickList [source]="receiverProposedItems" [target]="receiverTradeItems" sourceHeader="{{receiver.firstName}}'s veggies" [dragdrop]="true"
+                [responsive]="true" [sourceStyle]="{'height':'31.1rem'}" [targetStyle]="{'height':'30rem'}" filterBy="resourceName"
+                [showSourceFilter]="false" targetFilterPlaceholder="Search by name" [showSourceControls]="false" [showTargetControls]="false" >
+
+        <ng-template let-tradeItem pTemplate="product">
+            
+            <div class="product-item">
+                <div class="image-container">
+                    <img src="../../../assets/images/veggies/{{tradeItem.resourceImageUrl}}">
+                </div>
+
+                <div class="wrapper">
+                    <div class="product-list-detail" style="font-size: 1.1rem;">
+                        <div class="wrapper-horizontal">
+                            <p>
+                                {{tradeItem.resourceName | titlecase}}
+                            </p>
+                            <div>
+                                {{tradeItem.amount}}
+                                &nbsp;
+
+                                <p class="pi pi-tag" >
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+
+                <div class="product-list-detail"  style="margin-bottom: 0.7rem; margin-top: 0px;">
+                    <p-inputNumber [(ngModel)]="tradeItem.proposedAmount"></p-inputNumber>
+                    </div>
+                </div>
+            </div>
+        </ng-template>
+    </p-pickList>
+
+
             </div>
 
         </div>

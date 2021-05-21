@@ -24,6 +24,7 @@ import { DialogModule } from 'primeng/dialog';
 import { PanelModule } from 'primeng/panel';
 import { GMapModule } from 'primeng/gmap';
 import { PickListModule } from 'primeng/picklist';
+import {InputNumberModule} from 'primeng/inputnumber';
 import { MenuModule } from 'primeng/menu';
 import { StepsModule } from 'primeng/steps';
 
@@ -87,6 +88,8 @@ import { SettingsComponent } from './pages/settings/settings.component';
     PickListModule,
     MenuModule,
     StepsModule,
+    InputNumberModule,
+
   ],
   providers: [],
   bootstrap: [AppComponent],
