@@ -4,26 +4,23 @@ import { TradeItem } from 'src/app/core/interfaces/tradeItem';
 import { Observable } from 'rxjs';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class TradeItemOverviewService {
-
-  private endpoint = 'https://localhost:44360/api/TradeItem'
+  private endpoint = 'https://localhost:44360/api/TradeItem';
 
   httpOptions = {
-    headers: new HttpHeaders({ 'Content-Type': 'application/json' })
+    headers: new HttpHeaders({ 'Content-Type': 'application/json' }),
   };
 
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient) {}
 
   getTradeItems(): Observable<TradeItem[]> {
-    let data = this.http.get<TradeItem[]>(this.endpoint);
-    return data;
+    return this.http.get<TradeItem[]>(this.endpoint);
   }
 
   getUserTradeItems(id: number): Observable<TradeItem[]> {
     const url = `${this.endpoint}/${id}`;
     return this.http.get<TradeItem[]>(url);
   }
-
 }

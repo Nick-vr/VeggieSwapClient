@@ -15,12 +15,10 @@ export class LoginComponent implements OnInit {
 
   login(): void {
     this.accountService.login(this.model).subscribe(
-      (x) => {
-        // Happy path -> Database request was succesful
+      () => {
         this.loggedIn = true;
       },
       (error) => {
-        // Error handling -> Something went wrong. Display message to user
         console.log(error);
       }
     );
