@@ -10,7 +10,12 @@ export class UserService {
   private userEndpoint = 'https://localhost:44360/api/User';
 
   httpOptions = {
-    headers: new HttpHeaders({ 'Content-Type': 'application/json' }),
+    headers: new HttpHeaders({
+      'Content-Type': 'application/json',
+      Authorization: `Bearer ${
+        JSON.parse(localStorage.getItem('loggedInUser') || '{}').token
+      }`,
+    }),
   };
 
   constructor(private http: HttpClient) {}

@@ -15,7 +15,7 @@ const routes: Routes = [
   { path: 'sign-in', component: SignInComponent },
   { path: 'user-detail/:id', component: UserDetailComponent },
   { path: 'trade/:id', component: TradeComponent },
-  { path: 'settings/:id', component: SettingsComponent },
+  { path: 'settings', component: SettingsComponent },
   { path: '**', component: PageNotFoundComponent },
 ];
 
