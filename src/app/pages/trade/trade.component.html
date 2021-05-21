@@ -22,13 +22,40 @@
 
             <div  class="p-col-12" style="background-color: lightsalmon;">
 
-                <ul>
-                    <li *ngFor="let tradeItem of userTradeItems" >
-                        {{tradeItem.resourceName | titlecase}}
-                    </li>
-                </ul>
 
-                
+                <p-pickList [source]="userTradeItems" [target]="userProposedItems" sourceHeader="{{user.firstName}}'(s) veggies:" targetHeader="To {{receiver.firstName}}:" [dragdrop]="true"
+                            [responsive]="true" [sourceStyle]="{'height':'30rem'}" [targetStyle]="{'height':'30rem'}" filterBy="resourceName"
+                            sourceFilterPlaceholder="Search by name" targetFilterPlaceholder="Search by name" [showSourceControls]="false" [showTargetControls]="false" >
+
+                    <ng-template let-tradeItem pTemplate="product">
+                        
+                         <div class="product-item">
+                            <div class="image-container">
+                                <img src="../../../assets/images/veggies/{{tradeItem.resourceImageUrl}}">
+                            </div>
+
+                            <div class="wrapper">
+                                <div class="product-list-detail">
+                                    <div class="wrapper-horizontal">
+                                        <!-- <h5 class="p-md-6"> {{tradeItem.resourceName | titlecase}}</h5>
+                                        <span class="pi pi-tag product-category p-mb-2"> {{tradeItem.amount}}</span> -->
+                                        <p>
+                                            {{tradeItem.resourceName | titlecase}}
+                                        </p>
+                                        <p class="pi pi-tag">
+                                            {{tradeItem.amount}}
+                                        </p>
+                                    </div>
+                                </div>
+
+                            <div class="product-list-detail">
+                                <p-inputNumber [(ngModel)]="tradeItem.amount"></p-inputNumber>
+                                </div>
+                            </div>
+                        </div>
+                    </ng-template>
+                </p-pickList>
+
             </div>
 
         </div>
@@ -46,11 +73,8 @@
             </div>
 
             <div class="p-col-12 "style="background-color: yellowgreen;">
-                <ul>
-                    <li *ngFor="let tradeItem of receiverTradeItems" >
-                        {{tradeItem.resourceName | titlecase}}
-                    </li>
-                </ul>
+
+
             </div>
 
         </div>

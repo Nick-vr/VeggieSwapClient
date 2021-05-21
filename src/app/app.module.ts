@@ -24,6 +24,7 @@ import { DialogModule } from 'primeng/dialog';
 import { PanelModule } from 'primeng/panel';
 import { GMapModule } from 'primeng/gmap';
 import { PickListModule } from 'primeng/picklist';
+import {InputNumberModule} from 'primeng/inputnumber';
 
 // Generated Components
 import { HeaderComponent } from './components/header/header.component';
@@ -84,7 +85,8 @@ import { SettingsComponent } from './pages/settings/settings.component';
     PanelModule,
     GMapModule,
     ReactiveFormsModule,
-    PickListModule
+    PickListModule,
+    InputNumberModule
   ],
   providers: [],
   bootstrap: [AppComponent]
