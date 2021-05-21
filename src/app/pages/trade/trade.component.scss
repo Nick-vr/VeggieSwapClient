@@ -1,21 +1,7 @@
-// :host ::ng-deep {
-//   .p-grid-override {
-//   }
-// }
-
-
-// .mid-stretch {
-//   min-height: 100%;
-// }
-
-
-
 .grid-height {
   min-height: 80vh;
 }
 
-
-//Kobe test shit
 .button {
   margin: 12px;
   padding: 10px;
@@ -34,79 +20,72 @@
 }
 
 .wrapper-horizontal {
-
   display: flex;
-  justify-content: space-between ;
+  justify-content: space-between;
   align-items: center;
 }
 
 :host ::ng-deep {
-.p-picklist-title {
-  display: flex;
-  justify-content: space-around;
-  
-  
+  .p-picklist-title {
+    display: flex;
+    justify-content: space-around;
+  }
 
+  .p-picklist-list-wrapper {
+    margin: 0px !important;
+  }
+
+  .p-grid {
+    margin: 0;
+    padding: 0;
+  }
 }
 
-.p-picklist-list-wrapper {
-  margin: 0px !important;
-}
-
-
-//p-picklist-target-wrapper
-
-}
-
-//picklist:
 .product-item {
   display: flex;
   align-items: center;
   width: 100%;
-  //box-shadow: rgba(0, 0, 0, 0.07) 0px 1px 2px, rgba(0, 0, 0, 0.07) 0px 2px 4px, rgba(0, 0, 0, 0.07) 0px 4px 8px, rgba(0, 0, 0, 0.07) 0px 8px 16px, rgba(0, 0, 0, 0.07) 0px 16px 32px, rgba(0, 0, 0, 0.07) 0px 32px 64px;
-  box-shadow: rgba(0, 0, 0, 0.25) 0px 54px 55px, rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px, rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px;
-  
-  
-  img {
-      width: 55px;
-      margin: 1rem;
-      //margin-right: 1rem;
+  box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
 
+  img {
+    width: 55px;
+    margin: 1rem;
+    //margin-right: 1rem;
   }
 
   .product-list-detail {
-      flex: 1 1 0;
+    flex: 1 1 0;
   }
 
   .product-list-action {
-      display: flex;
-      flex-direction: column;
-      align-items: flex-end;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
   }
 
   .product-category-icon {
-      vertical-align: middle;
-      margin-right: .5rem;
+    vertical-align: middle;
+    margin-right: 0.5rem;
   }
 
   .product-category {
-      vertical-align: middle;
-      line-height: 1;
+    vertical-align: middle;
+    line-height: 1;
   }
 }
 
 @media screen and (max-width: 576px) {
   .product-item {
-      flex-wrap: wrap;
+    flex-wrap: wrap;
 
-      .image-container {
-          width: 100%;
-          text-align: center;
-      }
+    .image-container {
+      width: 100%;
+      text-align: center;
+    }
 
-      img {
-          margin: 0 0 1rem 0;
-          width: 100px;
-      }
+    img {
+      margin: 0 0 1rem 0;
+      width: 100px;
+    }
   }
 }

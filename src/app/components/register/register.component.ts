@@ -12,7 +12,7 @@ import { Subscription } from 'rxjs';
   providers: [MessageService],
 })
 export class RegisterComponent implements OnInit {
-  items?: MenuItem[];
+  items!: MenuItem[];
   subscription?: Subscription;
 
   registerUser: FormGroup = new FormGroup({
@@ -41,14 +41,20 @@ export class RegisterComponent implements OnInit {
         routerLink: 'personal',
       },
       {
-        label: 'Seat',
-        routerLink: 'seat',
+        label: 'Address',
+        routerLink: 'address',
       },
     ];
 
-    // this.subscription = this.regiserService.registerComplete$.subscribe(personalInformation) => {
-    //   this.messageService.add({severity:'success', summary:'Register complete', detail: 'Dear, ' + personalInformation.firstname + ' ' + personalInformation.lastname + ' your order completed.'});
-    // }
+    this.subscription = this.regiserService.registerComplete$.subscribe(
+      (registerInformation) => {
+        this.messageService.add({
+          severity: 'success',
+          summary: 'Register complete',
+          detail: `YO ${registerInformation.firstName} ${registerInformation.lastName}, your registration is completed.`,
+        });
+      }
+    );
   }
 
   register() {
@@ -58,5 +64,11 @@ export class RegisterComponent implements OnInit {
         this.validationErrors = error.error.errors;
       }
     );
+  }
+
+  ngOnDestroy() {
+    if (this.subscription) {
+      this.subscription.unsubscribe();
+    }
   }
 }

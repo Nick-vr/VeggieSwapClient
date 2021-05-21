@@ -7,7 +7,6 @@ import { TradeItemsService } from 'src/app/core/services/trade-items.service';
 import { PrimeNGConfig } from 'primeng/api';
 import { InputNumberModule } from 'primeng/inputnumber';
 
-
 @Component({
   selector: 'app-trade',
   templateUrl: './trade.component.html',
@@ -25,7 +24,6 @@ export class TradeComponent implements OnInit {
   // Lists of proposed tradeitems, picked on the page, to be returned to the backend
   userProposedItems!: TradeItem[];
   receiverProposedItems!: TradeItem[];
-
 
   constructor(
     private tradeItemsService: TradeItemsService,
@@ -75,5 +73,4 @@ export class TradeComponent implements OnInit {
       .getTradeItemsFromSelectedUser(this.receiver.id || 0)
       .subscribe((tradeItems) => (this.receiverTradeItems = tradeItems));
   }
-  
 }
