@@ -14,7 +14,7 @@
 
 
                 <p-pickList [source]="userTradeItems" [target]="userProposedItems" targetHeader="{{user.firstName}} {{user.lastName}}'s veggies" [dragdrop]="true"
-                            [responsive]="true" [sourceStyle]="{'height':'30rem'}" [targetStyle]="{'height':'31.186rem'}" filterBy="resourceName"
+                            [responsive]="true" [sourceStyle]="{'height':'30rem'}" [targetStyle]="{'height':'31.1rem'}" filterBy="resourceName"
                             sourceFilterPlaceholder="Search by name" [showTargetFilter]="false" [showSourceControls]="false" [showTargetControls]="false" >
 
                     <ng-template let-tradeItem pTemplate="product">
@@ -25,18 +25,22 @@
                             </div>
 
                             <div class="wrapper">
-                                <div class="product-list-detail">
+                                <div class="product-list-detail" style="font-size: 1.1rem;">
                                     <div class="wrapper-horizontal">
                                         <p>
                                             {{tradeItem.resourceName | titlecase}}
                                         </p>
-                                        <p class="pi pi-tag">
+                                        <div>
                                             {{tradeItem.amount}}
-                                        </p>
+                                            &nbsp;
+
+                                            <p class="pi pi-tag" >
+                                            </p>
+                                        </div>
                                     </div>
                                 </div>
 
-                            <div class="product-list-detail">
+                            <div class="product-list-detail"  style="margin-bottom: 0.7rem; margin-top: 0px;">
                                 <p-inputNumber [(ngModel)]="tradeItem.proposedAmount"></p-inputNumber>
                                 </div>
                             </div>
@@ -55,29 +59,33 @@
 
                     
                 <p-pickList [source]="receiverProposedItems" [target]="receiverTradeItems" sourceHeader="{{receiver.firstName}}'s veggies" [dragdrop]="true"
-                [responsive]="true" [sourceStyle]="{'height':'31.186rem'}" [targetStyle]="{'height':'30rem'}" filterBy="resourceName"
+                [responsive]="true" [sourceStyle]="{'height':'31.1rem'}" [targetStyle]="{'height':'30rem'}" filterBy="resourceName"
                 [showSourceFilter]="false" targetFilterPlaceholder="Search by name" [showSourceControls]="false" [showTargetControls]="false" >
 
         <ng-template let-tradeItem pTemplate="product">
             
-             <div class="product-item">
+            <div class="product-item">
                 <div class="image-container">
                     <img src="../../../assets/images/veggies/{{tradeItem.resourceImageUrl}}">
                 </div>
 
                 <div class="wrapper">
-                    <div class="product-list-detail">
+                    <div class="product-list-detail" style="font-size: 1.1rem;">
                         <div class="wrapper-horizontal">
                             <p>
                                 {{tradeItem.resourceName | titlecase}}
                             </p>
-                            <p class="pi pi-tag">
+                            <div>
                                 {{tradeItem.amount}}
-                            </p>
+                                &nbsp;
+
+                                <p class="pi pi-tag" >
+                                </p>
+                            </div>
                         </div>
                     </div>
 
-                <div class="product-list-detail">
+                <div class="product-list-detail"  style="margin-bottom: 0.7rem; margin-top: 0px;">
                     <p-inputNumber [(ngModel)]="tradeItem.proposedAmount"></p-inputNumber>
                     </div>
                 </div>
