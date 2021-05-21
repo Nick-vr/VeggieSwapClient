@@ -1,0 +1,24 @@
+section {
+  margin: 100px auto;
+  max-width: 80vw;
+}
+
+.p-field {
+  display: flex;
+  flex-direction: column;
+  width: 200px;
+
+  label {
+    font-weight: 500;
+    margin-left: 0.5rem;
+    color: var(--primary-color);
+  }
+
+  input {
+  }
+}
+
+.panel-content {
+  margin: 10px;
+  //background: green;
+}

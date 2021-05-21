@@ -1,47 +1,39 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { Location } from '@angular/common';
-import { User } from '../../core/interfaces/user'
-import { TradeItem } from '../../core/interfaces/tradeItem'
-import { UserService } from '../../core/services/user.service'
+import { User } from '../../core/interfaces/user';
+import { TradeItem } from '../../core/interfaces/tradeItem';
+import { UserService } from '../../core/services/user.service';
 import { TradeItemsService } from 'src/app/core/services/trade-items.service';
 
 @Component({
   selector: 'app-user-detail',
   templateUrl: './user-detail.component.html',
-  styleUrls: ['./user-detail.component.scss']
+  styleUrls: ['./user-detail.component.scss'],
 })
 export class UserDetailComponent implements OnInit {
-
   user!: User;
-  tradeItems!: TradeItem[];
+  tradeItems?: TradeItem[];
 
   constructor(
     private route: ActivatedRoute,
-    private location: Location,
     private userService: UserService,
-    private tradeItemsService: TradeItemsService,
-  ) { }
+    private tradeItemsService: TradeItemsService
+  ) {}
 
   ngOnInit(): void {
     this.getUser();
     this.getTradeItemsFromSelectedUser();
   }
 
-  getUser(): void{
+  getUser(): void {
     const id = Number(this.route.snapshot.paramMap.get('id'));
-    this.userService.getUser(id)
-      .subscribe(user => this.user = user);
+    this.userService.getUser(id).subscribe((user) => (this.user = user));
   }
 
-  save(): void{
-    this.userService.updateUser(this.user)
-      .subscribe()
-  }
-
-  getTradeItemsFromSelectedUser(): void{
+  getTradeItemsFromSelectedUser(): void {
     const id = Number(this.route.snapshot.paramMap.get('id'));
-    this.tradeItemsService.getTradeItemsFromSelectedUser(id)
-      .subscribe(tradeItems => this.tradeItems = tradeItems);
+    this.tradeItemsService
+      .getTradeItemsFromSelectedUser(id)
+      .subscribe((tradeItems) => (this.tradeItems = tradeItems));
   }
 }
