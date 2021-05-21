@@ -22,11 +22,11 @@ export class TradeComponent implements OnInit {
   user! : User;
   receiver!:  User;
   // Users - tradeitem lists (what they sell), collected from the database
-  userTradeItems?: TradeItem[];
-  receiverTradeItems?: TradeItem[];
+  userTradeItems!: TradeItem[];
+  receiverTradeItems!: TradeItem[];
   // Lists of proposed tradeitems, picked on the page, to be returned to the backend
-  userProposedItems?: TradeItem[];
-  receiverProposedItems?: TradeItem[];
+  userProposedItems!: TradeItem[];
+  receiverProposedItems!: TradeItem[];
 
 
   @Input() disableDoubleClickToMove: boolean = false;
