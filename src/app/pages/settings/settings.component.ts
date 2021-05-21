@@ -18,7 +18,7 @@ import { User } from '../../core/interfaces/user';
 })
 export class SettingsComponent implements OnInit {
   currentUser: User | undefined;
-  editProfileForm: FormGroup | undefined;
+  editProfileForm!: FormGroup;
   msgs: Message[] = [];
   //avatar = `https://robohash.org/${this.currentUser!.firstName}`;
 
