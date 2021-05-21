@@ -1,9 +1,12 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { User } from '../../core/interfaces/user';
 import { TradeItem } from '../../core/interfaces/tradeItem';
 import { UserService } from '../../core/services/user.service';
 import { TradeItemsService } from 'src/app/core/services/trade-items.service';
+import { PrimeNGConfig } from 'primeng/api';
+import { InputNumberModule } from 'primeng/inputnumber';
+
 
 @Component({
   selector: 'app-trade',
@@ -17,21 +20,31 @@ export class TradeComponent implements OnInit {
   user!: User;
   receiver!: User;
   // Users - tradeitem lists (what they sell), collected from the database
-  userTradeItems?: TradeItem[];
-  receiverTradeItems?: TradeItem[];
+  userTradeItems!: TradeItem[];
+  receiverTradeItems!: TradeItem[];
   // Lists of proposed tradeitems, picked on the page, to be returned to the backend
-  userProposedItems?: TradeItem[];
-  receiverProposedItems?: TradeItem[];
+  userProposedItems!: TradeItem[];
+  receiverProposedItems!: TradeItem[];
+
+
+  @Input() disableDoubleClickToMove: boolean = false;
+
+
 
   constructor(
     private tradeItemsService: TradeItemsService,
     private route: ActivatedRoute,
+    private userService: UserService,
+    private primengConfig: PrimeNGConfig,
+    private inputNumberModule: InputNumberModule,
     private userService: UserService
   ) {}
 
   ngOnInit(): void {
     this.getCurrentUserId();
     this.getUsers();
+    this.primengConfig.ripple = true;
+    this.userProposedItems = [];
   }
 
   getCurrentUserId() {
@@ -66,4 +79,5 @@ export class TradeComponent implements OnInit {
       .getTradeItemsFromSelectedUser(this.receiver.id || 0)
       .subscribe((tradeItems) => (this.receiverTradeItems = tradeItems));
   }
+  
 }
