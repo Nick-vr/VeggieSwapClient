@@ -1,9 +1,10 @@
 import { Component, OnInit } from '@angular/core';
-import { TradeItemOverviewService } from 'src/app/core/services/trade-item-overview.service';
-import { UserService } from 'src/app/core/services/user.service';
-import { TradeItem } from 'src/app/core/interfaces/tradeItem';
-import { User } from 'src/app/core/interfaces/user';
 import { ActivatedRoute } from '@angular/router';
+import { User } from '../../core/interfaces/user'
+import { TradeItem } from '../../core/interfaces/tradeItem'
+import { UserService } from '../../core/services/user.service'
+import { TradeItemsService } from 'src/app/core/services/trade-items.service';
+
 
 @Component({
   selector: 'app-trade',
@@ -25,16 +26,17 @@ export class TradeComponent implements OnInit {
   receiverProposedItems?: TradeItem[];
 
   constructor(
-    private tradeItemOverviewService: TradeItemOverviewService, 
-    private userService: UserService, 
+    private tradeItemsService: TradeItemsService,
     private route: ActivatedRoute,
+    private userService: UserService,
     
     ) { }
 
   ngOnInit(): void {
+    
     this.getCurrentUserId();
     this.getUsers();
-    this.getTradeItemLists();
+    
   }
   
   getCurrentUserId() {
@@ -43,12 +45,22 @@ export class TradeComponent implements OnInit {
   }
   
   getUsers() {
-    this.userService.getUser(this.CacheUserId || 0).subscribe(x => (this.user = x));
-    this.userService.getUser(Number(this.route.snapshot.paramMap.get('id'))).subscribe(x => (this.receiver = x));
+    this.userService.getUser(this.CacheUserId || 0).subscribe(x => {
+      (this.user = x)
+      this.getProposerItemList(x.id || 0)
+    });
+
+    this.userService.getUser(Number(this.route.snapshot.paramMap.get('id'))).subscribe(x => {
+      (this.receiver = x)
+      this.getReceiverItemList(x.id || 0)
+    });
   }
 
-  getTradeItemLists()  { 
-   this.tradeItemOverviewService.getUserTradeItems(this.user.id || 0).subscribe(x => (this.userTradeItems = x));
-   this.tradeItemOverviewService.getUserTradeItems(this.receiver.id || 0).subscribe(x => (this.userTradeItems = x));
+  getProposerItemList(id: number)  { 
+  this.tradeItemsService.getTradeItemsFromSelectedUser(this.user.id || 0).subscribe(tradeItems => this.userTradeItems = tradeItems);
+  }
+
+  getReceiverItemList(id:number)  {
+    this.tradeItemsService.getTradeItemsFromSelectedUser(this.receiver.id || 0).subscribe(tradeItems => this.receiverTradeItems = tradeItems);
   }
 }
