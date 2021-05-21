@@ -25,6 +25,7 @@ import { PanelModule } from 'primeng/panel';
 import { GMapModule } from 'primeng/gmap';
 import { PickListModule } from 'primeng/picklist';
 import { MenuModule } from 'primeng/menu';
+import { StepsModule } from 'primeng/steps';
 
 // Generated Components
 import { HeaderComponent } from './components/header/header.component';
@@ -84,7 +85,8 @@ import { SettingsComponent } from './pages/settings/settings.component';
     GMapModule,
     ReactiveFormsModule,
     PickListModule,
-    MenuModule
+    MenuModule,
+    StepsModule,
   ],
   providers: [],
   bootstrap: [AppComponent],
