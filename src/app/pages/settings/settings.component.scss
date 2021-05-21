@@ -6,19 +6,67 @@ section {
 .p-field {
   display: flex;
   flex-direction: column;
-  width: 200px;
+  align-self: center;
+  width: 250px;
 
   label {
     font-weight: 500;
     margin-left: 0.5rem;
     color: var(--primary-color);
   }
+}
 
-  input {
+.p-panel-body {
+  display: flex;
+  justify-content: space-around;
+  align-content: center;
+  padding: 20px 0;
+
+  @media (max-width: 750px) {
+    flex-direction: column-reverse;
+    align-items: center;
   }
 }
 
-.panel-content {
-  margin: 10px;
-  //background: green;
+form {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.img-wrapper {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 20px;
+
+  img {
+    width: 100%;
+    border-radius: 50%;
+    vertical-align: middle;
+  }
+
+  input {
+    margin-top: 50px;
+  }
+}
+
+:host ::ng-deep {
+  .p-button {
+    width: 100%;
+    height: 40px;
+  }
+
+  // .p-message {
+  //   position: fixed;
+  //   top: 5rem;
+  //   right: 0;
+  // }
+}
+
+.error-messages {
+  position: fixed;
+  top: 5.5rem;
+  margin-bottom: 10px;
 }
