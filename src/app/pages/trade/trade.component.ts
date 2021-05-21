@@ -27,17 +27,12 @@ export class TradeComponent implements OnInit {
   receiverProposedItems!: TradeItem[];
 
 
-  @Input() disableDoubleClickToMove: boolean = false;
-
-
-
   constructor(
     private tradeItemsService: TradeItemsService,
     private route: ActivatedRoute,
     private userService: UserService,
     private primengConfig: PrimeNGConfig,
-    private inputNumberModule: InputNumberModule,
-    private userService: UserService
+    private inputNumberModule: InputNumberModule
   ) {}
 
   ngOnInit(): void {
@@ -45,6 +40,7 @@ export class TradeComponent implements OnInit {
     this.getUsers();
     this.primengConfig.ripple = true;
     this.userProposedItems = [];
+    this.receiverProposedItems = [];
   }
 
   getCurrentUserId() {

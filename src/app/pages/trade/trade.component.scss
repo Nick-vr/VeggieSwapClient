@@ -24,6 +24,8 @@
 .vg-center {
   text-align: center;
   align-items: center;
+  margin: 0px;
+  margin-top: 20px;
 }
 
 .wrapper {
@@ -36,6 +38,29 @@
   display: flex;
   justify-content: space-between ;
   align-items: center;
+}
+
+:host ::ng-deep {
+.p-picklist-title {
+  display: flex !important;
+  justify-content: space-around !important;
+  align-items: center !important;
+  align-self: center !important;
+  align-content: center !important;
+  text-align: center !important;
+  align-tracks: ceil !important;
+  ruby-align: distribute-space;
+  initial-letter-align: length($list: 5);
+
+}
+
+.p-picklist-list-wrapper {
+  margin: 0px !important;
+}
+
+
+//p-picklist-target-wrapper
+
 }
 
 //picklist:
