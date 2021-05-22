@@ -7,6 +7,7 @@ import { TradeItemsService } from 'src/app/core/services/trade-items.service';
 import { PrimeNGConfig } from 'primeng/api';
 import { InputNumberModule } from 'primeng/inputnumber';
 
+
 @Component({
   selector: 'app-trade',
   templateUrl: './trade.component.html',
@@ -81,18 +82,38 @@ export class TradeComponent implements OnInit {
       .subscribe((tradeItems) => (this.receiverTradeItems = tradeItems));
   }
 
-  // proposeTrade() {
-  //   this.makeBothUsersProposedItems()
-  //   this.tradeItemsService
-  //   .postTrade(this.bothUsersProposedItems)
-  // }
+  proposeTrade() {
+    
+    if(this.makeBothUsersProposedItems())
+    {
+      console.log(this.bothUsersProposedItems)
+     
+      this.tradeItemsService.postTrade(this.bothUsersProposedItems);
+      this.tradeItemsService.putTrade(this.bothUsersProposedItems);
+    }
+   else
+    {
+     // throw exception;
+    } 
+  }
 
-  // makeBothUsersProposedItems() {
-  //   if(this.receiverProposedItems.length !== 0 && this.userProposedItems.length !== 0)
-  //   {
-  //     this.bothUsersProposedItems.
-  //   }
-  // }
+  makeBothUsersProposedItems(): boolean {
+    if(this.receiverProposedItems.length != 0 && this.userProposedItems.length != 0)
+    {
+      this.receiverProposedItems.forEach(element => {
+        this.bothUsersProposedItems.push(element);
+      });
+      this.userProposedItems.forEach(element => {
+        this.bothUsersProposedItems.push(element);
+      });
+      
+      return true;
+    }
+    else 
+    {
+      return false;
+    }
+  }
 
   acceptTrade() {
 
