@@ -20,4 +20,24 @@ export class TradeItemsService {
     const url = `${this.tradeItemEndpoint}/${id}`
     return this.http.get<TradeItem[]>(url, this.httpOptions);
   }
+
+  getTradeFromUsers(id: number, id2: number): Observable<TradeItem[]>{
+    const url = `${this.tradeItemEndpoint}/${id}/${id2}`
+    return this.http.get<TradeItem[]>(url, this.httpOptions);
+  }
+
+  postTrade(trade: Observable<TradeItem[]>) {
+    const url = `${this.tradeItemEndpoint}`
+    return this.http.post<TradeItem[]>(url, trade, this.httpOptions);
+  }
+
+  acceptTrade(id: number, id2: number): Observable<boolean>{
+    const url = `${this.tradeItemEndpoint}/accept/${id}/${id2}`
+    return this.http.get<boolean>(url, this.httpOptions);
+  }
+
+  cancelTrade(id: number, id2: number): Observable<boolean>{
+    const url = `${this.tradeItemEndpoint}/cancel/${id}/${id2}`
+    return this.http.get<boolean>(url, this.httpOptions);
+  }
 }

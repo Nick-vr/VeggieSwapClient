@@ -1,12 +1,14 @@
 <div class="p-grid">
     <div class="p-col-12 vg-center">
         <span class="p-buttonset">
-            <button pButton type="button" label=" Confirm Trade " icon="pi pi-check"
-                class="p-button-raised p-button-rounded" Style="font-size: 1.4rem;"></button>
+            <button pButton type="button" label=" Propose Trade " icon="pi pi-envelope"
+                class="p-button-raised p-button-rounded" Style="font-size: 1.4rem" onclick="proposeTrade()"></button>
+            <button pButton type="button" label=" Accept Trade " icon="pi pi-check"
+                class="p-button-raised p-button-rounded" Style="font-size: 1.4rem" onclick="acceptTrade()"></button>
             <button pButton type="button" label=" Reset " icon="pi pi-trash" class="p-button-raised p-button-rounded"
-                Style="font-size: 1.4rem;"></button>
+                Style="font-size: 1.4rem" onclick="window.location.reload()"></button>
             <button pButton type="button" label=" Cancel Trade " icon="pi pi-times"
-                class="p-button-raised p-button-rounded" Style="font-size: 1.4rem;"></button>
+                class="p-button-raised p-button-rounded" Style="font-size: 1.4rem" onclick="cancelTrade()"></button>
         </span>
     </div>
 
@@ -14,7 +16,7 @@
         <div class="p-col-12">
             <p-pickList [source]="userTradeItems" [target]="userProposedItems"
                 targetHeader="{{user?.firstName}} {{user?.lastName}}'s veggies" [dragdrop]="true" [responsive]="true"
-                [sourceStyle]="{'height':'65vh'}" [targetStyle]="{'height':'calc(65vh + 1.1rem)'}"
+                [sourceStyle]="{'height':'59vh'}" [targetStyle]="{'height':'calc(59vh + 1.1rem)'}"
                 filterBy="resourceName" sourceFilterPlaceholder="Search by name" [showTargetFilter]="false"
                 [showSourceControls]="false" [showTargetControls]="false" (onMoveToSource)=' myFunction()' >
                 <ng-template let-tradeItem pTemplate="product" >
@@ -50,7 +52,7 @@
         <div class="p-col-12">
             <p-pickList [source]="receiverProposedItems" [target]="receiverTradeItems"
                 sourceHeader="{{receiver?.firstName}}'s veggies" [dragdrop]="true" [responsive]="true"
-                [sourceStyle]="{'height':'calc(65vh + 1.1rem)'}" [targetStyle]="{'height':'65vh'}"
+                [sourceStyle]="{'height':'calc(59vh + 1.1rem)'}" [targetStyle]="{'height':'59vh'}"
                 filterBy="resourceName" [showSourceFilter]="false" targetFilterPlaceholder="Search by name"
                 [showSourceControls]="false" [showTargetControls]="false">
 

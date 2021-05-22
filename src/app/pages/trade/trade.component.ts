@@ -25,6 +25,8 @@ export class TradeComponent implements OnInit {
   userProposedItems!: TradeItem[];
   receiverProposedItems!: TradeItem[];
 
+  bothUsersProposedItems!: TradeItem[];
+
   constructor(
     private tradeItemsService: TradeItemsService,
     private route: ActivatedRoute,
@@ -39,6 +41,7 @@ export class TradeComponent implements OnInit {
     this.primengConfig.ripple = true;
     this.userProposedItems = [];
     this.receiverProposedItems = [];
+    this.bothUsersProposedItems = [];
   }
   myFunction() {
     var element = document.getElementById("test2");
@@ -77,4 +80,27 @@ export class TradeComponent implements OnInit {
       .getTradeItemsFromSelectedUser(this.receiver.id || 0)
       .subscribe((tradeItems) => (this.receiverTradeItems = tradeItems));
   }
+
+  // proposeTrade() {
+  //   this.makeBothUsersProposedItems()
+  //   this.tradeItemsService
+  //   .postTrade(this.bothUsersProposedItems)
+  // }
+
+  // makeBothUsersProposedItems() {
+  //   if(this.receiverProposedItems.length !== 0 && this.userProposedItems.length !== 0)
+  //   {
+  //     this.bothUsersProposedItems.
+  //   }
+  // }
+
+  acceptTrade() {
+
+  }
+
+  cancelTrade() {
+
+  }
+
+
 }
