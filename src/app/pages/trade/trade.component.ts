@@ -5,7 +5,7 @@ import { TradeItem } from '../../core/interfaces/tradeItem';
 import { UserService } from '../../core/services/user.service';
 import { TradeItemsService } from 'src/app/core/services/trade-items.service';
 import { PrimeNGConfig } from 'primeng/api';
-import { InputNumberModule } from 'primeng/inputnumber';
+import { Router } from '@angular/router';
 
 
 @Component({
@@ -13,19 +13,16 @@ import { InputNumberModule } from 'primeng/inputnumber';
   templateUrl: './trade.component.html',
   styleUrls: ['./trade.component.scss'],
 })
+
 export class TradeComponent implements OnInit {
-  //ID from localstorage cached User (logged in user)
+
   CacheUserId!: number;
-  // Users objects, collected from the database
   user!: User;
   receiver!: User;
-  // Users - tradeitem lists (what they sell), collected from the database
   userTradeItems!: TradeItem[];
   receiverTradeItems!: TradeItem[];
-  // Lists of proposed tradeitems, picked on the page, to be returned to the backend
   userProposedItems!: TradeItem[];
   receiverProposedItems!: TradeItem[];
-
   bothUsersProposedItems!: TradeItem[];
 
   constructor(
@@ -33,7 +30,7 @@ export class TradeComponent implements OnInit {
     private route: ActivatedRoute,
     private userService: UserService,
     private primengConfig: PrimeNGConfig,
-    private inputNumberModule: InputNumberModule
+    private router: Router
   ) {}
 
   ngOnInit(): void {
@@ -44,15 +41,15 @@ export class TradeComponent implements OnInit {
     this.receiverProposedItems = [];
     this.bothUsersProposedItems = [];
   }
+
   myFunction() {
     var element = document.getElementById("test2");
     element!.classList.add("testhidden");
   }
-  
+
   getCurrentUserId() {
     let CacheUser: User = JSON.parse(
-      localStorage.getItem('loggedInUser') || '{}'
-    );
+      localStorage.getItem('loggedInUser') || '{}'  );
     this.CacheUserId = CacheUser.id || 0;
   }
 
@@ -87,14 +84,10 @@ export class TradeComponent implements OnInit {
     if(this.makeBothUsersProposedItems())
     {
       console.log(this.bothUsersProposedItems)
-     
       this.tradeItemsService.postTrade(this.bothUsersProposedItems);
       this.tradeItemsService.putTrade(this.bothUsersProposedItems);
-    }
-   else
-    {
-     // throw exception;
-    } 
+    } else {  } // throw exception
+    this.leavePage('/trade/'+this.user?.id, false)
   }
 
   makeBothUsersProposedItems(): boolean {
@@ -106,22 +99,42 @@ export class TradeComponent implements OnInit {
       this.userProposedItems.forEach(element => {
         this.bothUsersProposedItems.push(element);
       });
-      
       return true;
-    }
-    else 
-    {
-      return false;
-    }
+    } else  {return false; }
   }
 
-  acceptTrade() {
-
+      acceptTrade() {
+    if (this.CheckLists()){
+      this.tradeItemsService.acceptTrade(this.user.id, this.receiver.id);
+    }else { }// error message
+    this.leavePage('swap-now', true) // to trade overview, todo!
   }
 
-  cancelTrade() {
-
+ leavePage(path: string, emptyValues: boolean){
+  if(emptyValues){
+    this.user.id = 0;
+    this.receiver.id = 0;
+    this.userTradeItems = [];
+    this.receiverTradeItems = [];
+    this.userProposedItems = [];
+    this.receiverProposedItems = [];
+    this.bothUsersProposedItems = [];
   }
 
+  
+  this.router.navigate([path]);
+ }
 
+  CheckLists(): boolean {
+    this.makeBothUsersProposedItems();
+      const filteredUser1 = this.userProposedItems.filter(element =>  element.proposedAmount != undefined && element.proposedAmount > 0 );
+      const filteredUser2 = this.receiverProposedItems.filter(element =>  element.proposedAmount != undefined && element.proposedAmount > 0 );
+      if (filteredUser1.length > 0 && filteredUser2.length > 0) {return true ;} else {return false;}
+  }
+
+  cancelTrade() 
+  {
+    this.tradeItemsService.cancelTrade(this.user.id, this.receiver.id);
+    this.leavePage('swap-now', true)
+  }
 }
