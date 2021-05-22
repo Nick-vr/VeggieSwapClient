@@ -40,7 +40,11 @@ export class TradeComponent implements OnInit {
     this.userProposedItems = [];
     this.receiverProposedItems = [];
   }
-
+  myFunction() {
+    var element = document.getElementById("test2");
+    element!.classList.add("testhidden");
+  }
+  
   getCurrentUserId() {
     let CacheUser: User = JSON.parse(
       localStorage.getItem('loggedInUser') || '{}'

@@ -16,8 +16,8 @@
                 targetHeader="{{user?.firstName}} {{user?.lastName}}'s veggies" [dragdrop]="true" [responsive]="true"
                 [sourceStyle]="{'height':'65vh'}" [targetStyle]="{'height':'calc(65vh + 1.1rem)'}"
                 filterBy="resourceName" sourceFilterPlaceholder="Search by name" [showTargetFilter]="false"
-                [showSourceControls]="false" [showTargetControls]="false">
-                <ng-template let-tradeItem pTemplate="product">
+                [showSourceControls]="false" [showTargetControls]="false" (onMoveToSource)=' myFunction()' >
+                <ng-template let-tradeItem pTemplate="product" >
                     <div class="product-item">
                         <div class="image-container">
                             <img src="../../../assets/images/veggies/{{tradeItem.resourceImageUrl}}">
@@ -37,8 +37,8 @@
                                     </div>
                                 </div>
                             </div>
-                            <div class="product-list-detail" style="margin-bottom: 0.7rem; margin-top: 0px;">
-                                <p-inputNumber [(ngModel)]="tradeItem.proposedAmount"></p-inputNumber>
+                            <div class="product-list-detail " id="test2" style="margin-bottom: 0.7rem; margin-top: 0px;">
+                                <p-inputNumber [(ngModel)]="tradeItem.proposedAmount" ></p-inputNumber>
                             </div>
                         </div>
                     </div>
