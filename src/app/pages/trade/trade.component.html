@@ -1,14 +1,22 @@
 <div class="p-grid">
     <div class="p-col-12 vg-center">
-        <span class="p-buttonset">
+        <span class="p-buttonset  ">
+            <button pButton type="button" label="Back " icon="pi pi-arrow-circle-left" class=" p-button-rounded"
+                Style="font-size: 1.4rem" (click)="buttonBack()"></button>
+            <button pButton type="button" label=" Accept Trade " *ngIf="this .buttonAcceptIsvisible" icon="pi pi-check"
+                class=" p-button-rounded" Style="font-size: 1.4rem" (click)="acceptTrade()"></button>
             <button pButton type="button" label=" Propose Trade " icon="pi pi-envelope"
-                class="p-button-raised p-button-rounded" Style="font-size: 1.4rem" (click)="proposeTrade()"  ></button>
-            <button pButton type="button" label=" Accept Trade " icon="pi pi-check"
-                class="p-button-raised p-button-rounded" Style="font-size: 1.4rem" (click)="acceptTrade()"></button>
-            <button pButton type="button" label=" Reset " icon="pi pi-trash" class="p-button-raised p-button-rounded"
-                Style="font-size: 1.4rem" onclick="window.location.reload()"></button>
-            <button pButton type="button" label=" Cancel Trade " icon="pi pi-times"
-                class="p-button-raised p-button-rounded" Style="font-size: 1.4rem" (click)="cancelTrade()"></button>
+                *ngIf="this.buttonProposeIsvisible" class="p-button-rounded" Style="font-size: 1.4rem"
+                (click)="proposeTrade()"></button>
+            <button pButton type="button" label=" Refresh " icon="pi pi-refresh" *ngIf="this.buttonResetIsvisible"
+                class=" p-button-rounded" Style="font-size: 1.4rem" onclick="window.location.reload()"></button>
+            <button pButton type="button" label=" Stop Trading" icon="pi pi-times" *ngIf="this.buttonCancelIsvisible"
+                class=" p-button-rounded" Style="font-size: 1.4rem" (click)="cancelTrade()"></button>
+            <button pButton type="button" label=" Cancel Proposition " icon="pi pi-times"
+                *ngIf="this.buttonCancelPropositionIsvisible" class=" p-button-rounded" Style="font-size: 1.4rem"
+                (click)="cancelTrade()"></button>
+
+
         </span>
     </div>
 
@@ -16,17 +24,18 @@
         <div class="p-col-12">
             <p-pickList [source]="userTradeItems" [target]="userProposedItems"
                 targetHeader="{{user?.firstName}} {{user?.lastName}}'s veggies" [dragdrop]="true" [responsive]="true"
-                [sourceStyle]="{'height':'59vh'}" [targetStyle]="{'height':'calc(59vh + 1.1rem)'}"
+                [sourceStyle]="{'height':'59vh' } " [targetStyle]="{'height':'calc(59vh + 1.1rem)'}"
                 filterBy="resourceName" sourceFilterPlaceholder="Search by name" [showTargetFilter]="false"
-                [showSourceControls]="false" [showTargetControls]="false" (onMoveToSource)=' myFunction()' >
-                <ng-template let-tradeItem pTemplate="product" >
-                    <div class="product-item">
+                [showSourceControls]="false" [showTargetControls]="false" (onSourceSelect)=' myFunction()'
+                (onTargetSelect)=' myFunction()'>
+                <ng-template let-tradeItem pTemplate="product">
+                    <div class="product-item ">
                         <div class="image-container">
                             <img src="../../../assets/images/veggies/{{tradeItem.resourceImageUrl}}">
                         </div>
                         <div class="wrapper">
                             <div class="product-list-detail" style="font-size: 1.1rem;">
-                                <div class="wrapper-horizontal">
+                                <div class="wrapper-horizontal ">
                                     <p>
                                         {{tradeItem.resourceName | titlecase}}
                                     </p>
@@ -39,8 +48,9 @@
                                     </div>
                                 </div>
                             </div>
-                            <div class="product-list-detail " id="test2" style="margin-bottom: 0.7rem; margin-top: 0px;">
-                                <p-inputNumber [(ngModel)]="tradeItem.proposedAmount" ></p-inputNumber>
+                            <div class="product-list-detail " id="test2"
+                                style="margin-bottom: 0.7rem; margin-top: 0px;">
+                                <p-inputNumber [(ngModel)]="tradeItem.proposedAmount"></p-inputNumber>
                             </div>
                         </div>
                     </div>
@@ -51,10 +61,11 @@
     <div class="p-md-6">
         <div class="p-col-12">
             <p-pickList [source]="receiverProposedItems" [target]="receiverTradeItems"
-                sourceHeader="{{receiver?.firstName}}'s veggies" [dragdrop]="true" [responsive]="true"
-                [sourceStyle]="{'height':'calc(59vh + 1.1rem)'}" [targetStyle]="{'height':'59vh'}"
+                sourceHeader="{{receiver?.firstName}} {{receiver?.lastName}}'s's veggies" [dragdrop]="true"
+                [responsive]="true" [sourceStyle]="{'height':'calc(59vh + 1.1rem)'}" [targetStyle]="{'height':'59vh'}"
                 filterBy="resourceName" [showSourceFilter]="false" targetFilterPlaceholder="Search by name"
-                [showSourceControls]="false" [showTargetControls]="false">
+                [showSourceControls]="false" [showTargetControls]="false" (onSourceSelect)=' myFunction()'
+                (onTargetSelect)=' myFunction()'>
 
                 <ng-template let-tradeItem pTemplate="product">
 
