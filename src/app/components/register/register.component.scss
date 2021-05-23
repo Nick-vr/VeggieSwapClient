@@ -13,3 +13,12 @@ button {
   color: var(--pink-500);
   font-size: 0.7rem;
 }
+
+form {
+  max-width: 50% !important;
+  margin: 0 auto;
+
+  @media (max-width: 850px) {
+    max-width: 80% !important;
+  }
+}

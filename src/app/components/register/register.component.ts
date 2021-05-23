@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { AccountService } from '../../core/services/account.service';
-import { MessageService, MenuItem } from 'primeng/api';
+import { MessageService, MenuItem, Message } from 'primeng/api';
 import { Subscription } from 'rxjs';
 
 @Component({
@@ -14,6 +14,7 @@ export class RegisterComponent implements OnInit {
   items!: MenuItem[];
   passMatch: boolean = true;
   isEmailValid: boolean = true;
+  msgs: Message[] = [];
 
   registerUser: FormGroup = new FormGroup({
     firstName: new FormControl('', Validators.required),
@@ -42,15 +43,23 @@ export class RegisterComponent implements OnInit {
   ngOnInit(): void {}
 
   register() {
-    this.passwordsMatch(this.registerUser);
-    this.emailIsValid();
+    if (
+      this.passwordsMatch(this.registerUser) &&
+      this.emailIsValid() &&
+      !this.formHasErrors()
+    ) {
+      // this.accountService.register(this.registerUser.value).subscribe(
+      //   () => {},
+      //   (error) => {
+      //     this.validationErrors = error.error.errors;
+      //   }
+      // );
+      console.log('registered');
 
-    // this.accountService.register(this.registerUser.value).subscribe(
-    //   (response) => {},
-    //   (error) => {
-    //     this.validationErrors = error.error.errors;
-    //   }
-    // );
+      this.successMessage();
+    } else {
+      this.errorMessage();
+    }
   }
 
   passwordsMatch(formGroup: FormGroup) {
@@ -68,5 +77,36 @@ export class RegisterComponent implements OnInit {
     return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)
       ? (this.isEmailValid = true)
       : (this.isEmailValid = false);
+  }
+
+  formHasErrors() {
+    return this.registerUser?.invalid;
+  }
+
+  successMessage() {
+    this.msgs = [
+      {
+        severity: 'success',
+        summary: 'Success',
+        detail: 'You are now registered',
+      },
+    ];
+    setTimeout(() => {
+      this.msgs = [];
+    }, 3000);
+  }
+
+  errorMessage() {
+    this.msgs = [
+      {
+        severity: 'error',
+        summary: 'Error',
+        detail:
+          'Failed to register, have you tried turning it off and on again?',
+      },
+    ];
+    setTimeout(() => {
+      this.msgs = [];
+    }, 3000);
   }
 }

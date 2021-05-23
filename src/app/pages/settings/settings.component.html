@@ -38,6 +38,15 @@
   ></p-messages>
 
   <p-tabView>
+    <p-tabPanel header="Active trades" leftIcon="pi pi-chart-bar">
+      <div></div>
+    </p-tabPanel>
+    <p-tabPanel header="Trade items" leftIcon="pi pi-share-alt">
+      <div></div>
+    </p-tabPanel>
+    <p-tabPanel header="Vcoins" leftIcon="pi pi-money-bill">
+      <div></div>
+    </p-tabPanel>
     <p-tabPanel header="Edit profile" leftIcon="pi pi-user-edit">
       <div class="p-panel-body">
         <form
@@ -112,20 +121,11 @@
             class="p-shadow-5"
             src="https://robohash.org/{{ currentUser?.firstName }}"
             alt="avatar"
-            pTooltip="Avatar is linked to your first name"
+            pTooltip="Your very personal avatar!"
             tooltipPosition="top"
           />
         </div>
       </div>
-    </p-tabPanel>
-    <p-tabPanel header="Trade items" leftIcon="pi pi-share-alt">
-      <div></div>
-    </p-tabPanel>
-    <p-tabPanel header="Vcoins" leftIcon="pi pi-money-bill">
-      <div></div>
-    </p-tabPanel>
-    <p-tabPanel header="Active trades" leftIcon="pi pi-chart-bar">
-      <div></div>
     </p-tabPanel>
   </p-tabView>
 </section>

@@ -28,6 +28,7 @@ import { InputNumberModule } from 'primeng/inputnumber';
 import { MenuModule } from 'primeng/menu';
 import { StepsModule } from 'primeng/steps';
 import { PasswordModule } from 'primeng/password';
+import { AvatarModule } from 'primeng/avatar';
 
 // Generated Components
 import { HeaderComponent } from './components/header/header.component';
@@ -91,6 +92,7 @@ import { SettingsComponent } from './pages/settings/settings.component';
     StepsModule,
     InputNumberModule,
     PasswordModule,
+    AvatarModule,
   ],
   providers: [],
   bootstrap: [AppComponent],

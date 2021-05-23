@@ -5,10 +5,10 @@ import {
   FormBuilder,
   Validators,
 } from '@angular/forms';
-
 import { Message, MessageService } from 'primeng/api';
 import { UserService } from '../../core/services/user.service';
 import { User } from '../../core/interfaces/user';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-settings',
@@ -24,7 +24,8 @@ export class SettingsComponent implements OnInit {
   constructor(
     private userService: UserService,
     private fb: FormBuilder,
-    private messageService: MessageService
+    private messageService: MessageService,
+    private router: Router
   ) {}
 
   ngOnInit(): void {
@@ -70,7 +71,7 @@ export class SettingsComponent implements OnInit {
       return;
     } else {
       this.userService.updateUser(UPDATED_USER).subscribe(
-        (x) => {},
+        () => {},
         (error) => {
           console.log(error);
         }
