@@ -4,6 +4,7 @@ import { Observable } from 'rxjs';
 import { User } from '../interfaces/user';
 import { Register } from '../interfaces/register';
 import { map } from 'rxjs/operators';
+import { UserToken } from '../interfaces/userToken';
 
 @Injectable({
   providedIn: 'root',

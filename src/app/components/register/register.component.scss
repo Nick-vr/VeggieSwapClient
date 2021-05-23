@@ -1,0 +1,15 @@
+:host ::ng-deep {
+  .p-float-label {
+    margin-top: 30px;
+  }
+}
+
+button {
+  margin: 30px 8px;
+}
+
+.error-text {
+  display: block;
+  color: var(--pink-500);
+  font-size: 0.7rem;
+}

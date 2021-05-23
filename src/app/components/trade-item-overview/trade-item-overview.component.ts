@@ -1,5 +1,5 @@
 import { Component, OnInit, Input } from '@angular/core';
-import { TradeItemOverviewService } from 'src/app/core/services/trade-item-overview.service';
+import { TradeItemsService } from 'src/app/core/services/trade-items.service';
 import { TradeItem } from 'src/app/core/interfaces/tradeItem';
 
 @Component({
@@ -14,7 +14,7 @@ export class TradeItemOverviewComponent implements OnInit {
   selectedTradeItem: TradeItem[] = [];
   userId!: number;
 
-  constructor(private tradeItemOverviewService: TradeItemOverviewService) {}
+  constructor(private tradeItemsService: TradeItemsService) {}
 
   ngOnInit(): void {
     this.getData();
@@ -30,7 +30,7 @@ export class TradeItemOverviewComponent implements OnInit {
   }
 
   getData() {
-    this.tradeItemOverviewService
+    this.tradeItemsService
       .getTradeItems()
       .subscribe((x) => (this.tradeItems = x));
   }
