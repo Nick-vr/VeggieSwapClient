@@ -21,7 +21,7 @@ nav {
     color: var(--text-color);
 
     img {
-      width: 50px;
+      width: 90px;
     }
 
     span {
@@ -39,4 +39,8 @@ nav {
       margin: 0 20px;
     }
   }
+}
+
+:host ::ng-deep .p-button {
+  font-size: 1.3rem;
 }
