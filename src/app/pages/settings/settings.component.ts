@@ -61,18 +61,6 @@ export class SettingsComponent implements OnInit {
   }
 
   onSave() {
-    // THIS BAD CODE REFRESHES
-    // this.currentUser!.firstName = this.editProfileForm?.value.firstName;
-    // this.currentUser!.lastName = this.editProfileForm?.value.lastName;
-    // this.currentUser!.email = this.editProfileForm?.value.email;
-    // this.currentUser!.addressStreetName =
-    //   this.editProfileForm?.value.addressStreetName;
-    // this.currentUser!.addressStreetNumber =
-    //   this.editProfileForm?.value.addressStreetNumber;
-    // this.currentUser!.addressPostalCode =
-    //   this.editProfileForm?.value.addressPostalCode;
-
-    // THIS GOOD CODE DOES NOT REFRESH??
     const CURRENT_USER = this.currentUser;
     const EDITED_USER = this.editProfileForm?.value;
     const UPDATED_USER = { ...CURRENT_USER, ...EDITED_USER };

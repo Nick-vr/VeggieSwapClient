@@ -1,40 +1,36 @@
-<!-- <form #loginForm="ngForm" class="d-flex right" (ngSubmit)="login()" autocomplete="off" *ngIf=!loggedIn>
-
-        <input name="Email" class="form-control me-2" [(ngModel)]="model.Email" type="text" placeholder="UserName" />
-
-
-        <input name="password" class="form-control me-2" [(ngModel)]="model.password" type="password"
-                placeholder="Password" />
-
-
-        <button class="btn btn-outline-success" type="submit">Login</button>
-</form>
-
-<div *ngIf=loggedIn>
-        Welcome!
-        <button (click)="logout()" class="btn btn-outline-success">Log out</button>
-</div> -->
 <div class="sign-in-wrapper">
-        <form #loginForm="ngForm" (ngSubmit)="login()" *ngIf=!loggedIn>
-                <div class="p-formgroup-inline">
-                        <div class="p-field">
-                                <label for="email" class="p-sr-only">Email</label>
-                                <input [(ngModel)]="model.Email" id="email" name="email" type="email" pInputText
-                                        placeholder="Firstname">
-                        </div>
-                        <div class="p-field">
-                                <label for="password" class="p-sr-only">Password</label>
-                                <p-password [(ngModel)]="model.password" name="password" placeholder="Password"
-                                        [toggleMask]="true" [feedback]="false"></p-password>
-                                <!-- <input id="password" type="password" pInputText placeholder="Password"
-                                [(ngModel)]="model.password"> -->
-                        </div>
-                        <button pButton pRipple type="button" type="submit" label="Login"></button>
-                </div>
-        </form>
+  <form #loginForm="ngForm" (ngSubmit)="login()" *ngIf="!userId">
+    <div class="p-formgroup-inline">
+      <div class="p-field">
+        <label for="email" class="p-sr-only">Email</label>
+        <input
+          [(ngModel)]="model.Email"
+          id="email"
+          name="email"
+          type="email"
+          pInputText
+          placeholder="Firstname"
+        />
+      </div>
+      <div class="p-field">
+        <label for="password" class="p-sr-only">Password</label>
+        <p-password
+          [(ngModel)]="model.password"
+          name="password"
+          placeholder="Password"
+          [toggleMask]="true"
+          [feedback]="false"
+        ></p-password>
+      </div>
+      <button
+        pButton
+        pRipple
+        type="button"
+        type="submit"
+        label="Login"
+      ></button>
+    </div>
+  </form>
 
-        <div *ngIf=loggedIn>
-                Welcome!
-                <button (click)="logout()" class="btn btn-outline-success">Log out</button>
-        </div>
+  <div *ngIf="userId">You are logged in</div>
 </div>
