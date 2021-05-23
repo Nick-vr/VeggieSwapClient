@@ -83,11 +83,14 @@ export class TradeComponent implements OnInit {
     
     if(this.makeBothUsersProposedItems())
     {
+      this.bothUsersProposedItems.forEach(element => {
+        element.activeUserId = this.receiver.id;
+      });
       console.log(this.bothUsersProposedItems)
       this.tradeItemsService.postTrade(this.bothUsersProposedItems);
-      this.tradeItemsService.putTrade(this.bothUsersProposedItems);
+      //this.tradeItemsService.putTrade(this.bothUsersProposedItems);
     } else {  } // throw exception
-    this.leavePage('/trade/'+this.user?.id, false)
+    this.leavePage('/trade/'+this.user?.id, true)
   }
 
   makeBothUsersProposedItems(): boolean {
