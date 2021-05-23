@@ -1,0 +1,16 @@
+.sign-in-wrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 50px;
+}
+
+:host ::ng-deep {
+  .p-field {
+    input {
+      @media (max-width: 830px) {
+        width: 200px;
+      }
+    }
+  }
+}

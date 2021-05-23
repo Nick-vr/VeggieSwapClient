@@ -27,6 +27,7 @@ import { PickListModule } from 'primeng/picklist';
 import { InputNumberModule } from 'primeng/inputnumber';
 import { MenuModule } from 'primeng/menu';
 import { StepsModule } from 'primeng/steps';
+import { PasswordModule } from 'primeng/password';
 
 // Generated Components
 import { HeaderComponent } from './components/header/header.component';
@@ -89,6 +90,7 @@ import { SettingsComponent } from './pages/settings/settings.component';
     MenuModule,
     StepsModule,
     InputNumberModule,
+    PasswordModule,
   ],
   providers: [],
   bootstrap: [AppComponent],
