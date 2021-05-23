@@ -3,6 +3,7 @@ export interface TradeItem {
   userId: number;
   userFirstName: string;
   userLastName: string;
+  userPostalCode?: string;
   resourceId: number;
   resourceName: string;
   resourceImageUrl: string;

@@ -26,6 +26,7 @@ export class TradeItemOverviewComponent implements OnInit {
         imageUrl: 'resourceImageUrl',
       },
       { field: 'amount', header: 'Amount' },
+      { field: 'userPostalCode', header: 'Postalcode' },
     ];
   }
 
