@@ -1,13 +1,30 @@
-<p-table #dt [columns]="cols" [value]="tradeItems" [paginator]="true" [rowsPerPageOptions]="[5,10,15,20]" [rows]="10"
-  styleClass="p-datatable-responsive-demo " sortField="resourceName"
-  [globalFilterFields]="['userFirstName','resourceName','amount', 'userPostalCode']" selectionMode="none">
-
+<p-table
+  #dt
+  [columns]="cols"
+  [value]="tradeItems"
+  [paginator]="true"
+  [rowsPerPageOptions]="[5, 10, 15, 20]"
+  [rows]="10"
+  styleClass="p-datatable-responsive-demo "
+  sortField="resourceName"
+  [globalFilterFields]="[
+    'userFirstName',
+    'resourceName',
+    'amount',
+    'userPostalCode'
+  ]"
+  selectionMode="none"
+>
   <ng-template pTemplate="caption">
     <div class="p-s-flex">
       <span class="p-input-icon-left p-ml-auto">
         <i class="pi pi-search"></i>
-        <input pInputText type="text" (input)="dt.filterGlobal($any($event.target).value, 'contains')"
-          placeholder="Search keyword" />
+        <input
+          pInputText
+          type="text"
+          (input)="dt.filterGlobal($any($event.target).value, 'contains')"
+          placeholder="Search keyword"
+        />
       </span>
     </div>
   </ng-template>
@@ -22,20 +39,28 @@
   <ng-template pTemplate="body" let-tradeItem let-columns="columns">
     <tr>
       <td>
-        <button routerLink="/user-detail/{{ tradeItem.userId }}" type="button"
-          pTooltip="Swap with {{ tradeItem.userFirstName }}" pButton pRipple icon="pi pi-search"></button>
+        <button
+          routerLink="/user-detail/{{ tradeItem.userId }}"
+          type="button"
+          pTooltip="Swap with {{ tradeItem.userFirstName }}"
+          pButton
+          pRipple
+          icon="pi pi-search"
+        ></button>
       </td>
 
-      <td>{{tradeItem.userFirstName}} {{tradeItem.userLastName}}</td>
+      <td>{{ tradeItem.userFirstName }} {{ tradeItem.userLastName }}</td>
 
       <td>
-        <img src="../../../assets/images/veggies/{{ tradeItem.resourceImageUrl }}" width="32" />
+        <img
+          src="../../../assets/images/veggies/{{ tradeItem.resourceImageUrl }}"
+          width="32"
+        />
         {{ tradeItem.resourceName | titlecase }}
       </td>
 
-      <td>{{tradeItem.amount}}</td>
-      <td>{{tradeItem.userPostalCode}}</td>
-
+      <td>{{ tradeItem.amount }}</td>
+      <td>{{ tradeItem.userPostalCode }}</td>
     </tr>
   </ng-template>
 </p-table>
