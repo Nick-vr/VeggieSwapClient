@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { User } from 'src/app/core/interfaces/user';
 import { AccountService } from '../../core/services/account.service';
 import { Router } from '@angular/router';
+import { NavigationComponent } from '../navigation/navigation.component';
 
 @Component({
   selector: 'app-login',
@@ -14,7 +15,11 @@ export class LoginComponent implements OnInit {
   errorMessages: any | undefined;
   userId: number = 0;
 
-  constructor(private accountService: AccountService, private router: Router) {}
+  constructor(
+    private accountService: AccountService,
+    private router: Router,
+    private nav: NavigationComponent
+  ) {}
 
   ngOnInit(): void {
     this.currentUser = JSON.parse(localStorage.getItem('loggedInUser') || '{}');
@@ -27,6 +32,9 @@ export class LoginComponent implements OnInit {
     this.accountService.login(this.model).subscribe(
       () => {
         this.userId = 1;
+        this.nav.loggedInUser = JSON.parse(
+          localStorage.getItem('loggedInUser') || '{}'
+        );
       },
       (error) => {
         console.log(error);
@@ -34,7 +42,7 @@ export class LoginComponent implements OnInit {
       }
     );
     setTimeout(() => {
-      this.router.navigate(['/settings']);
+      window.location.href = 'http://localhost:4200/settings';
     }, 1000);
   }
 

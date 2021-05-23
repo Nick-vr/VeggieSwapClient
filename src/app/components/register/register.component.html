@@ -1,6 +1,6 @@
 <form [formGroup]="registerUser" (ngSubmit)="register()" autocomplete="off">
   <div class="p-fluid p-grid">
-    <div class="p-field p-col-12 p-md-4">
+    <div class="p-field p-col-12">
       <span class="p-float-label">
         <input
           type="text"
@@ -21,7 +21,7 @@
       </span>
     </div>
 
-    <div class="p-field p-col-12 p-md-4">
+    <div class="p-field p-col-12">
       <span class="p-float-label">
         <input
           type="text"
@@ -43,7 +43,7 @@
       </span>
     </div>
 
-    <div class="p-field p-col-12 p-md-4">
+    <div class="p-field p-col-12">
       <span class="p-float-label">
         <input
           type="text"
@@ -68,7 +68,7 @@
       </span>
     </div>
 
-    <div class="p-field p-col-12 p-md-4">
+    <div class="p-field p-col-12">
       <span class="p-float-label">
         <input
           type="text"
@@ -84,7 +84,7 @@
       </span>
     </div>
 
-    <div class="p-field p-col-12 p-md-4">
+    <div class="p-field p-col-12">
       <span class="p-float-label">
         <p-password
           name="password"
@@ -105,7 +105,7 @@
       </span>
     </div>
 
-    <div class="p-field p-col-12 p-md-4">
+    <div class="p-field p-col-12">
       <span class="p-float-label">
         <p-password
           name="password"
@@ -131,3 +131,8 @@
     ></button>
   </div>
 </form>
+<p-messages
+  [(value)]="msgs"
+  [showTransitionOptions]="'100ms'"
+  [hideTransitionOptions]="'500ms'"
+></p-messages>
