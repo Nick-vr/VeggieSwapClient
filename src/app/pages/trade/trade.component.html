@@ -72,7 +72,7 @@
     <div class="p-md-6">
         <div class="p-col-12">
             <p-pickList [source]="receiverProposedItems" [target]="receiverTradeItems"
-                sourceHeader="{{receiver?.firstName}} {{receiver?.lastName}}'s's veggies" [dragdrop]="true"
+                sourceHeader="{{receiver?.firstName}} {{receiver?.lastName}}'s veggies" [dragdrop]="true"
                 [responsive]="true" [sourceStyle]="{'height':'calc(59vh + 1.1rem)'}" [targetStyle]="{'height':'59vh'}"
                 filterBy="resourceName" [showSourceFilter]="false" targetFilterPlaceholder="Search by name"
                 [showSourceControls]="false" [showTargetControls]="false" (onSourceSelect)=' toggleAcceptTradeButton()'

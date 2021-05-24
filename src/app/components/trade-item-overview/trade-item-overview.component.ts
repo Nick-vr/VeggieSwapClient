@@ -1,6 +1,7 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { TradeItemsService } from 'src/app/core/services/trade-items.service';
 import { TradeItem } from 'src/app/core/interfaces/tradeItem';
+import { User } from 'src/app/core/interfaces/user';
 
 @Component({
   selector: 'app-trade-item-overview',
@@ -13,10 +14,12 @@ export class TradeItemOverviewComponent implements OnInit {
   cols!: any[];
   selectedTradeItem: TradeItem[] = [];
   userId!: number;
+  CacheUser!: User;
 
   constructor(private tradeItemsService: TradeItemsService) {}
 
   ngOnInit(): void {
+    this.CacheUser = JSON.parse(localStorage.getItem('loggedInUser') || '{}');
     this.getData();
     this.cols = [
       { field: 'userFirstName', header: 'Name' },
@@ -33,7 +36,7 @@ export class TradeItemOverviewComponent implements OnInit {
   getData() {
     this.tradeItemsService
       .getTradeItems()
-      .subscribe((x) => (this.tradeItems = x));
+      .subscribe((x) => (this.tradeItems = x.filter(x => x.resourceId !== 51 && x.userId !== this.CacheUser.id && x.amount > 0)));
   }
 
   getTradeItems() {
