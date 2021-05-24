@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import {
   FormControl,
   FormGroup,
@@ -24,7 +24,6 @@ export class EditProfileComponent implements OnInit {
   constructor(
     private userService: UserService,
     private fb: FormBuilder,
-    private messageService: MessageService,
     private router: Router
   ) {}
 
@@ -37,6 +36,7 @@ export class EditProfileComponent implements OnInit {
       addressStreetName: new FormControl('', Validators.required),
       addressStreetNumber: new FormControl('', Validators.required),
       addressPostalCode: new FormControl('', Validators.required),
+      imageUrl: new FormControl('myavatar', Validators.required),
     });
   }
 
@@ -53,6 +53,7 @@ export class EditProfileComponent implements OnInit {
         addressStreetName: this.currentUser.addressStreetName,
         addressStreetNumber: this.currentUser.addressStreetNumber,
         addressPostalCode: this.currentUser.addressPostalCode,
+        imageUrl: this.currentUser.imageUrl,
       });
     });
   }
@@ -71,7 +72,9 @@ export class EditProfileComponent implements OnInit {
       return;
     } else {
       this.userService.updateUser(UPDATED_USER).subscribe(
-        () => {},
+        () => {
+          this.ngOnInit();
+        },
         (error) => {
           console.log(error);
         }

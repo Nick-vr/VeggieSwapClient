@@ -1,1 +1,43 @@
-<h1>settings trade items</h1>
+<form (ngSubmit)="onSubmit()" #form="ngForm">
+  <p-dropdown
+    [options]="veggies"
+    [(ngModel)]="selectedVeggie"
+    optionLabel="name"
+    [filter]="true"
+    filterBy="name"
+    [showClear]="true"
+    placeholder="Select a Country"
+  >
+    <ng-template pTemplate="selectedItem">
+      <div class="country-item country-item-value" *ngIf="selectedVeggie">
+        <img
+          src="../../../../assets/images/veggies/{{ selectedVeggie.imageUrl }}"
+        />
+        <div>{{ selectedVeggie.name }}</div>
+      </div>
+    </ng-template>
+    <ng-template let-veggie pTemplate="item">
+      <div>
+        <img src="../../../../assets/images/veggies/{{ veggie.imageUrl }}" />
+        <div>{{ veggie.name }}</div>
+      </div>
+    </ng-template>
+  </p-dropdown>
+</form>
+
+<div class="user-tradeable-items">
+  <div *ngFor="let tradeItem of tradeItems">
+    <p-card
+      header="{{ tradeItem.resourceName | titlecase }}"
+      styleClass="p-card-override"
+    >
+      <ng-template pTemplate="header">
+        <img
+          alt="Card"
+          src="../../../assets/images/veggies/{{ tradeItem.resourceImageUrl }}"
+        />
+      </ng-template>
+      <p>Amount available: {{ tradeItem.amount }}</p>
+    </p-card>
+  </div>
+</div>
