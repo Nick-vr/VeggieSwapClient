@@ -29,6 +29,7 @@ import { MenuModule } from 'primeng/menu';
 import { StepsModule } from 'primeng/steps';
 import { PasswordModule } from 'primeng/password';
 import { AvatarModule } from 'primeng/avatar';
+import { DropdownModule } from 'primeng/dropdown';
 
 // Generated Components
 import { HeaderComponent } from './components/header/header.component';
@@ -99,6 +100,7 @@ import { EditProfileComponent } from './components/settings-components/edit-prof
     InputNumberModule,
     PasswordModule,
     AvatarModule,
+    DropdownModule,
   ],
   providers: [],
   bootstrap: [AppComponent],
