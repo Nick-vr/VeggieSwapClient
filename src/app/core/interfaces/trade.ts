@@ -3,8 +3,7 @@ import { User } from './user';
 
 export interface Trade {
   id: number;
-  proposer: User;
-  receiver: User;
+  user: User;
   tradeItemProposals: TradeItem[];
   completed: boolean;
   activeUserId: number;

@@ -1,1 +1,105 @@
-<h1>settings active trades <button (click)='this.click()'>hello world</button></h1>
+<div class="p-grid ">
+
+  <div class="p-md-12">
+    <p-dropdown [options]="this.listItems" [(ngModel)]="this.selectedItem" [showClear]="false"
+      (onChange)='this.editList()'></p-dropdown>
+  </div>
+
+
+  <div class="p-md-12">
+    <p-table [value]="TradeList" dataKey="id">
+      <ng-template pTemplate="header">
+        <tr>
+          <th style="width: 4rem"></th>
+          <th style="width: 5rem"></th>
+          <th pSortableColumn="user.firstName">
+            Name <p-sortIcon field="user.firstName"></p-sortIcon>
+          </th>
+          <th>Address</th>
+          <th pSortableColumn="user.addressPostalCode">
+            Postalcode <p-sortIcon field="user.addressPostalCode"></p-sortIcon>
+          </th>
+
+
+          <th>More info</th>
+        </tr>
+      </ng-template>
+      <ng-template pTemplate="body" let-trade let-expanded="expanded">
+        <tr>
+          <td>
+            <button type="button " pButton pRipple [pRowToggler]="trade" (onClick)="this.handleClick()"
+              class="p-button-text p-button-rounded p-button-plain p-button-sm"
+              [icon]="expanded ? 'pi pi-chevron-down' : 'pi pi-chevron-right'"></button>
+          </td>
+          <td>
+            <p-avatar image="https://robohash.org/{{ trade.user.imageUrl }}" styleClass="p-mr-2 p-shadow-3" size="large"
+              shape="circle"></p-avatar>
+          </td>
+          <td>
+
+            {{ trade.user.firstName }}
+          </td>
+          <td>
+            {{ trade.user.addressStreetName }} {{ trade.user.addressStreetNumber }}
+          </td>
+          <td>{{ trade.user.addressPostalCode }}</td>
+
+
+
+          <td>
+            <button pButton pRipple type="button" icon="pi pi-search" label="Trade"
+              class="p-button-rounded p-button-success" style="width: 100px;"></button>
+          </td>
+        </tr>
+      </ng-template>
+      <ng-template pTemplate="rowexpansion" let-trade>
+        <tr>
+          <td colspan="7">
+            <div class="p-p-3">
+              <p-table [value]="trade.tradeItemProposals" dataKey="id">
+                <ng-template pTemplate="header">
+        <tr>
+
+          <th pSortableColumn="resourceName">
+            Resource <p-sortIcon field="resourceName"></p-sortIcon>
+          </th>
+          <th>
+            Proposed Amount
+          </th>
+          <th>
+            Available Amount
+          </th>
+          <th>
+            Owned By
+          </th>
+          <th style="width: 4rem"></th>
+        </tr>
+      </ng-template>
+      <ng-template pTemplate="body" let-tradeItemProposal>
+        <tr>
+
+          <td><img src="../../../../assets/images/veggies/{{tradeItemProposal.resourceImageUrl}}" width="40" class="" />
+            &nbsp; {{ tradeItemProposal.resourceName | titlecase }}</td>
+
+          <td> {{tradeItemProposal.proposedAmount}}</td>
+          <td>
+            {{tradeItemProposal.amount}}
+          </td>
+          <td>
+            {{tradeItemProposal.userFirstName}}
+          </td>
+        </tr>
+      </ng-template>
+      <ng-template pTemplate="emptymessage">
+        <tr>
+          <td colspan="6">There are no items for this trade yet.</td>
+        </tr>
+      </ng-template>
+    </p-table>
+  </div>
+  </td>
+  </tr>
+  </ng-template>
+  </p-table>
+</div>
+</div>
