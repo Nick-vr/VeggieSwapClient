@@ -132,7 +132,7 @@ export class TradeComponent implements OnInit {
       this.tradeItemsService.postTrade(this.bothUsersProposedItems);
     } else {
     } // throw exception
-    this.leavePage('/trade/' + this.user?.id, true);
+    this.router.navigate(['/settings']);
   }
 
   makeBothUsersProposedItems(): boolean {
@@ -161,7 +161,7 @@ export class TradeComponent implements OnInit {
       this.tradeItemsService
         .acceptTrade(this.user.id, this.receiver.id)
         .subscribe();
-      window.location.reload();
+      this.router.navigate(['/settings']);
     } else {
     }
   }

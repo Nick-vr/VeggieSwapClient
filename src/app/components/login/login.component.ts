@@ -32,7 +32,7 @@ export class LoginComponent implements OnInit {
     this.accountService.login(this.model).subscribe(
       () => {
         this.userId = 1;
-        this.nav.loggedInUser = JSON.parse(
+        this.nav.currentUser = JSON.parse(
           localStorage.getItem('loggedInUser') || '{}'
         );
       },

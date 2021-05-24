@@ -13,7 +13,7 @@ import { TradeItem } from 'src/app/core/interfaces/tradeItem';
 import { TradeItemsService } from 'src/app/core/services/trade-items.service';
 
 interface Veggie {
-  id: number,
+  id: number;
   name: string;
   imageUrl: string;
 }
@@ -61,10 +61,10 @@ export class TradeItemsComponent implements OnInit {
       );
   }
 
-  getAllTradableItems(): void{
+  getAllTradableItems(): void {
     this.tradeItemsService
       .getTradeItems()
-      .subscribe((veggies) => (this.veggies = veggies.filter);
+      .subscribe((veggies) => (this.veggies = veggies));
   }
 
   onSubmit(): void {

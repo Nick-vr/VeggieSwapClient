@@ -14,7 +14,7 @@ export class ActiveTradesComponent implements OnInit {
   FullList: Trade[] = [];
   CacheUser!: User;
   listItems: string[];
-  selectedItem: string = 'Trades to accept';
+  selectedItem: string = 'All Trades';
   constructor(private tradeService: TradeService, private router: Router) {
     this.listItems = [
       'Proposed Trades',
@@ -30,9 +30,7 @@ export class ActiveTradesComponent implements OnInit {
       .getTradesFromSelectedUser(this.CacheUser.id)
       .subscribe((x) => {
         this.FullList = x;
-        this.TradeList = x.filter(
-          (x) => x.activeUserId == this.CacheUser.id && x.completed == false
-        );
+        this.TradeList = x;
       });
   }
   editList() {
@@ -40,12 +38,12 @@ export class ActiveTradesComponent implements OnInit {
     if (this.selectedItem.includes('Proposed')) {
       this.TradeList = [];
       this.TradeList = this.FullList.filter(
-        (x) => x.activeUserId == this.CacheUser.id && x.completed == false
+        (x) => x.activeUserId != this.CacheUser.id && x.completed == false
       );
     } else if (this.selectedItem.includes('Accept')) {
       this.TradeList = [];
       this.TradeList = this.FullList.filter(
-        (x) => x.activeUserId != this.CacheUser.id && x.completed == false
+        (x) => x.activeUserId == this.CacheUser.id && x.completed == false
       );
     } else if (this.selectedItem.includes('Completed')) {
       this.TradeList = [];
@@ -55,8 +53,8 @@ export class ActiveTradesComponent implements OnInit {
     }
   }
 
-  handleClick() {
+  handleClick(id: any) {
     console.log('fezfzefez');
-    this.router.navigate(['/trade/']);
+    this.router.navigate(['/trade/' + id]);
   }
 }

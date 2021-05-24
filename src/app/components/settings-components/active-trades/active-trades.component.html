@@ -27,7 +27,7 @@
       <ng-template pTemplate="body" let-trade let-expanded="expanded">
         <tr>
           <td>
-            <button type="button " pButton pRipple [pRowToggler]="trade" (onClick)="this.handleClick()"
+            <button type="button " pButton pRipple [pRowToggler]="trade"
               class="p-button-text p-button-rounded p-button-plain p-button-sm"
               [icon]="expanded ? 'pi pi-chevron-down' : 'pi pi-chevron-right'"></button>
           </td>
@@ -48,7 +48,8 @@
 
           <td>
             <button pButton pRipple type="button" icon="pi pi-search" label="Trade"
-              class="p-button-rounded p-button-success" style="width: 100px;"></button>
+              (click)="this.handleClick(trade.user.id)" class="p-button-rounded p-button-success"
+              style="width: 100px;"></button>
           </td>
         </tr>
       </ng-template>
