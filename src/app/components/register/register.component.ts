@@ -2,7 +2,6 @@ import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { AccountService } from '../../core/services/account.service';
 import { MessageService, MenuItem, Message } from 'primeng/api';
-import { Subscription } from 'rxjs';
 
 @Component({
   selector: 'app-register',
@@ -35,19 +34,12 @@ export class RegisterComponent implements OnInit {
 
   validationErrors: string[] = [];
 
-  constructor(
-    private accountService: AccountService,
-    private messageService: MessageService
-  ) {}
+  constructor() {}
 
   ngOnInit(): void {}
 
   register() {
-    if (
-      this.passwordsMatch(this.registerUser) &&
-      this.emailIsValid() &&
-      !this.formHasErrors()
-    ) {
+    if (this.passwordsMatch() && this.emailIsValid() && !this.formHasErrors()) {
       // this.accountService.register(this.registerUser.value).subscribe(
       //   () => {},
       //   (error) => {
@@ -62,10 +54,9 @@ export class RegisterComponent implements OnInit {
     }
   }
 
-  passwordsMatch(formGroup: FormGroup) {
+  passwordsMatch() {
     const password = this.registerUser.value.password;
     const confirmPassword = this.registerUser.value.confirmPassword;
-    console.log(`1: ${password} 2: ${confirmPassword}`);
 
     return password === confirmPassword
       ? (this.passMatch = true)
@@ -74,6 +65,7 @@ export class RegisterComponent implements OnInit {
 
   emailIsValid() {
     const email = this.registerUser.value.email;
+
     return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)
       ? (this.isEmailValid = true)
       : (this.isEmailValid = false);

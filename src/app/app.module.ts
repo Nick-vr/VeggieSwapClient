@@ -43,7 +43,6 @@ import { TradeItemOverviewComponent } from './components/trade-item-overview/tra
 import { LoginComponent } from './components/login/login.component';
 import { UserDetailComponent } from './components/user-detail/user-detail.component';
 import { TradeComponent } from './pages/trade/trade.component';
-import { UserTradeItemsComponent } from './components/user-trade-items/user-trade-items.component';
 import { SettingsComponent } from './pages/settings/settings.component';
 import { ActiveTradesComponent } from './components/settings-components/active-trades/active-trades.component';
 import { TradeItemsComponent } from './components/settings-components/trade-items/trade-items.component';
@@ -65,7 +64,6 @@ import { EditProfileComponent } from './components/settings-components/edit-prof
     LoginComponent,
     UserDetailComponent,
     TradeComponent,
-    UserTradeItemsComponent,
     SettingsComponent,
     ActiveTradesComponent,
     TradeItemsComponent,
