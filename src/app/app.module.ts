@@ -45,6 +45,10 @@ import { UserDetailComponent } from './components/user-detail/user-detail.compon
 import { TradeComponent } from './pages/trade/trade.component';
 import { UserTradeItemsComponent } from './components/user-trade-items/user-trade-items.component';
 import { SettingsComponent } from './pages/settings/settings.component';
+import { ActiveTradesComponent } from './components/settings-components/active-trades/active-trades.component';
+import { TradeItemsComponent } from './components/settings-components/trade-items/trade-items.component';
+import { VcoinsComponent } from './components/settings-components/vcoins/vcoins.component';
+import { EditProfileComponent } from './components/settings-components/edit-profile/edit-profile.component';
 
 @NgModule({
   declarations: [
@@ -63,6 +67,10 @@ import { SettingsComponent } from './pages/settings/settings.component';
     TradeComponent,
     UserTradeItemsComponent,
     SettingsComponent,
+    ActiveTradesComponent,
+    TradeItemsComponent,
+    VcoinsComponent,
+    EditProfileComponent,
   ],
   imports: [
     BrowserModule,

@@ -1,0 +1,110 @@
+<!-- Error messages -->
+<div class="error-messages">
+  <p-message
+    severity="error"
+    text="First Name is required"
+    *ngIf="
+      !editProfileForm.controls['firstName'].valid &&
+      editProfileForm.controls['firstName'].dirty
+    "
+  >
+  </p-message>
+  <p-message
+    severity="error"
+    text="Last Name is required"
+    *ngIf="
+      !editProfileForm.controls['lastName'].valid &&
+      editProfileForm.controls['lastName'].dirty
+    "
+  >
+  </p-message>
+  <p-message
+    severity="error"
+    text="Email is required"
+    *ngIf="
+      !editProfileForm.controls['email'].valid &&
+      editProfileForm.controls['email'].dirty
+    "
+  >
+  </p-message>
+</div>
+
+<div class="p-panel-body">
+  <form
+    [formGroup]="editProfileForm"
+    #f="ngForm"
+    (ngSubmit)="onSave()"
+    autocomplete="off"
+  >
+    <div class="p-field">
+      <label for="firstname">First Name</label>
+      <input
+        id="firstname"
+        type="text"
+        pInputText
+        formControlName="firstName"
+      />
+    </div>
+
+    <div class="p-field">
+      <label for="lastname">Last Name</label>
+      <input id="lastname" type="text" pInputText formControlName="lastName" />
+    </div>
+
+    <div class="p-field">
+      <label for="email">Email</label>
+      <input id="email" type="email" pInputText formControlName="email" />
+    </div>
+
+    <div class="p-field">
+      <label for="streetname">Street Name</label>
+      <input
+        id="streetname"
+        type="text"
+        pInputText
+        formControlName="addressStreetName"
+      />
+    </div>
+
+    <div class="p-field">
+      <label for="streetnumber">Street Number</label>
+      <input
+        id="streetnumber"
+        type="number"
+        pInputText
+        formControlName="addressStreetNumber"
+      />
+    </div>
+
+    <div class="p-field">
+      <label for="postalcode">Postal Code</label>
+      <input
+        id="postalcode"
+        type="number"
+        pInputText
+        formControlName="addressPostalCode"
+      />
+    </div>
+
+    <p-button
+      type="submit"
+      label="Save"
+      [disabled]="editProfileForm.invalid"
+    ></p-button>
+  </form>
+  <div class="img-wrapper">
+    <img
+      class="p-shadow-5"
+      src="https://robohash.org/{{ currentUser?.firstName }}"
+      alt="avatar"
+      pTooltip="Your very personal avatar!"
+      tooltipPosition="top"
+    />
+  </div>
+</div>
+<!-- On form save messages -->
+<p-messages
+  [(value)]="msgs"
+  [showTransitionOptions]="'100ms'"
+  [hideTransitionOptions]="'500ms'"
+></p-messages>
