@@ -6,14 +6,8 @@
   <ul>
     <!-- <li routerLinkActive="active"><a routerLink="/home">Home</a></li> -->
     <li>
-      <a routerLink="/swap-now"
-        ><button
-          pButton
-          type="button"
-          label="Swap now!"
-          class="p-button-outlined p-button-secondary p-shadow-2 big"
-        ></button
-      ></a>
+      <a routerLink="/swap-now"><button pButton type="button" label="Swap now!"
+          class="p-button-outlined p-button-secondary p-shadow-2 big"></button></a>
     </li>
   </ul>
   <ul>
@@ -22,23 +16,13 @@
     </li>
     <li *ngIf="userId">
       <a routerLink="/settings">
-        <p-avatar
-          image="https://robohash.org/{{ loggedInUser?.imageUrl }}"
-          styleClass="p-mr-2 p-shadow-3"
-          size="large"
-          shape="circle"
-        ></p-avatar>
+        <p-avatar image="https://robohash.org/{{ loggedInUser?.imageUrl }}" styleClass="p-mr-2 p-shadow-3" size="large"
+          shape="circle"></p-avatar>
       </a>
     </li>
     <li *ngIf="userId">
-      <button
-        (click)="logout()"
-        pButton
-        pRipple
-        type="button"
-        icon="pi pi-sign-out"
-        class="p-button-rounded p-button-secondary p-button-outlined"
-      ></button>
+      <button (click)="logout()" pButton pRipple type="button" icon="pi pi-sign-out"
+        class="p-button-rounded p-button-secondary p-button-outlined"></button>
     </li>
   </ul>
 </nav>
