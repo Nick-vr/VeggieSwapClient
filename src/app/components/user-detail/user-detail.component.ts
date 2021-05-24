@@ -34,6 +34,6 @@ export class UserDetailComponent implements OnInit {
     const id = Number(this.route.snapshot.paramMap.get('id'));
     this.tradeItemsService
       .getTradeItemsFromSelectedUser(id)
-      .subscribe((tradeItems) => (this.tradeItems = tradeItems));
+      .subscribe((tradeItems) => (this.tradeItems = tradeItems.filter(x => x.resourceId !== 51 && x.amount > 0)));
   }
 }
