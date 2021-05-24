@@ -43,6 +43,15 @@ export class TradeComponent implements OnInit {
     this.primengConfig.ripple = true;
   }
 
+  async asyncCall() {
+    this.PageUserId = Number(this.route.snapshot.paramMap.get('id'));
+    this.CacheUser = JSON.parse(localStorage.getItem('loggedInUser') || '{}');
+    await this.getProposerItemList();
+    await this.CreateTradeSnapshot();
+    this.getUsers();
+    this.setButtons();
+  }
+
   getProposerItemList() {
     return new Promise((resolve) => {
       this.tradeItemsService
@@ -53,16 +62,6 @@ export class TradeComponent implements OnInit {
     });
   }
 
-  async asyncCall() {
-    this.PageUserId = Number(this.route.snapshot.paramMap.get('id'));
-    this.CacheUser = JSON.parse(localStorage.getItem('loggedInUser') || '{}');
-    await this.getProposerItemList();
-    await this.CreateTradeSnapshot();
-    this.getUsers();
-    console.log('get users back');
-    this.setButtons();
-    console.log('hello');
-  }
   getUsers() {
     this.userService.getUser(this.CacheUser.id || 0).subscribe((x) => {
       this.user = x;
@@ -71,11 +70,9 @@ export class TradeComponent implements OnInit {
     this.userService.getUser(this.PageUserId).subscribe((x) => {
       this.receiver = x;
     });
-    console.log('get users uitgevoerd');
   }
+
   setButtons() {
-    console.log('current' + this.CacheUser.id);
-    console.log('receiver' + this.PageUserId);
     if (this.FullTradeList[0].activeUserId === this.CacheUser.id) {
       this.buttonAcceptIsvisible = true;
       this.buttonProposeIsvisible = false;
@@ -118,46 +115,44 @@ export class TradeComponent implements OnInit {
     });
   }
 
-  getReceiverItemList(id: number) {
-    this.tradeItemsService
-      .getTradeItemsFromSelectedUser(this.receiver.id || 0)
-      .subscribe((tradeItems) => (this.receiverTradeItems = tradeItems));
-  }
-  myFunction() {
+  toggleAcceptTradeButton() {
     if (this.FullTradeList[0].activeUserId === this.CacheUser.id) {
       this.buttonAcceptIsvisible = false;
       this.buttonResetIsvisible = true;
       this.buttonProposeIsvisible = true;
     }
   }
+
   proposeTrade() {
     if (this.makeBothUsersProposedItems()) {
       this.bothUsersProposedItems.forEach((element) => {
         element.activeUserId = this.receiver.id;
       });
-      console.log(this.bothUsersProposedItems);
+
       this.tradeItemsService.postTrade(this.bothUsersProposedItems);
-      //this.tradeItemsService.putTrade(this.bothUsersProposedItems);
     } else {
     } // throw exception
     this.leavePage('/trade/' + this.user?.id, true);
   }
 
   makeBothUsersProposedItems(): boolean {
-    if (
-      this.receiverProposedItems.length != 0 &&
-      this.userProposedItems.length != 0
-    ) {
-      this.receiverProposedItems.forEach((element) => {
+    let receiverResult = this.receiverProposedItems.filter(
+      (x) => x.proposedAmount != undefined && x.proposedAmount > 0
+    );
+    let userResult = this.userProposedItems.filter(
+      (x) => x.proposedAmount != undefined && x.proposedAmount > 0
+    );
+    if (receiverResult.length > 0 && userResult.length != 0) {
+      receiverResult.forEach((element) => {
         this.bothUsersProposedItems.push(element);
       });
-      this.userProposedItems.forEach((element) => {
+      userResult.forEach((element) => {
         this.bothUsersProposedItems.push(element);
       });
       window.location.reload();
       return true;
     } else {
-      return false;
+      return false; // invalid trade
     }
   }
 
