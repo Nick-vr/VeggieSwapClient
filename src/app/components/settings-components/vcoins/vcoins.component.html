@@ -1,1 +1,52 @@
-<h1>settings Vcoins</h1>
+<section>
+    <div class="p-grid">
+        <div class="p-col-6 "><h1>{{ CacheUser?.firstName }}'s V-coin Wallet</h1>
+            <i>
+                V-coins are a type of currency in Veggie Swap. They can be bought only on our official site and are used to trade for home-grown products of other users. 
+                These exist only to facilitate the buying process when running out of products to trade with and are not meant for any other purposes.
+            </i>
+        </div>
+    </div>
+    
+    <div class="p-grid">
+        <div class="p-col-4 center">
+            <div *ngFor="let tradeItem of Vcoins">
+                <p-card
+                  header="{{ tradeItem.resourceName | titlecase }}"
+                  styleClass="p-card-override"
+                >
+                    <img 
+                      class="imgv"
+                      alt="Card"
+                      src="../../../assets/images/veggies/{{
+                        tradeItem.resourceImageUrl
+                      }}"
+                    />
+                  <p>Amount available: <b>{{ tradeItem.amount }}</b> </p>
+                </p-card>
+              </div>
+            
+        </div>
+        <div class="p-col-4">
+            <br>
+            <br>
+            <br>
+            <div class="p-col-4 buymore">
+                <p-button
+              routerLink="/Purchase"
+              label="Buy more V-coins"
+              icon="pi pi-shopping-cart"
+              iconPos="left"
+            >
+            </p-button>
+            </div>
+            <br>
+            <br>
+            <div class="p-col-8 bottom">
+                <img class="imgpay" src="..\..\..\assets\images\secure.png">
+            </div>
+        </div>
+    </div>
+
+  </section>
+  
