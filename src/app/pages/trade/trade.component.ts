@@ -182,20 +182,16 @@ export class TradeComponent implements OnInit {
 
   CheckLists(): boolean {
     this.makeBothUsersProposedItems();
-    const filteredUser1 = this.userProposedItems.filter(
-      (element) =>
-        element.proposedAmount != undefined && element.proposedAmount > 0
-    );
-    const filteredUser2 = this.receiverProposedItems.filter(
-      (element) =>
-        element.proposedAmount != undefined && element.proposedAmount > 0
-    );
-    if (filteredUser1.length > 0 && filteredUser2.length > 0) {
+    if (
+      this.bothUsersProposedItems.filter((x) => x.proposedAmount! > x.amount)
+        .length == 0
+    ) {
       return true;
     } else {
-      return false;
+      return false; // insufficiant resources
     }
   }
+
   buttonBack() {
     this.leavePage('swap-now', true);
   }
