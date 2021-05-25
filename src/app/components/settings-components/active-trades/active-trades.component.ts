@@ -30,20 +30,38 @@ export class ActiveTradesComponent implements OnInit {
       .getTradesFromSelectedUser(this.CacheUser.id)
       .subscribe((x) => {
         this.FullList = x;
-        this.TradeList = x;
+        this.setStatus();
       });
   }
+  setStatus() {
+    -this.FullList.filter(
+      (x) => x.activeUserId != this.CacheUser.id && x.completed == false
+    ).forEach((element) => {
+      element.status = 'proposed';
+    });
+    this.FullList.filter(
+      (x) => x.activeUserId == this.CacheUser.id && x.completed == false
+    ).forEach((element) => {
+      element.status = 'waiting';
+    });
+    this.FullList.filter((x) => x.completed == true).forEach((element) => {
+      element.status = 'completed';
+    });
+    this.TradeList = this.FullList;
+    console.log(this.FullList);
+  }
+
   editList() {
     console.log('ok edit list');
     if (this.selectedItem.includes('Proposed')) {
       this.TradeList = [];
-      this.TradeList = this.FullList.filter(
-        (x) => x.activeUserId != this.CacheUser.id && x.completed == false
+      this.TradeList = this.FullList.filter((x) =>
+        x.status?.includes('proposed')
       );
     } else if (this.selectedItem.includes('Accept')) {
       this.TradeList = [];
-      this.TradeList = this.FullList.filter(
-        (x) => x.activeUserId == this.CacheUser.id && x.completed == false
+      this.TradeList = this.FullList.filter((x) =>
+        x.status?.includes('response')
       );
     } else if (this.selectedItem.includes('Completed')) {
       this.TradeList = [];
