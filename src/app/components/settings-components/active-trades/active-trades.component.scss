@@ -1,0 +1,20 @@
+.trade-badge.status-proposed {
+  background-color: #b3e5fc;
+  color: #23547b;
+}
+.trade-badge.status-waiting {
+  background-color: #c8e6c9;
+  color: #256029;
+}
+.trade-badge.status-completed {
+  background-color: #ffd8b2;
+  color: #805b36;
+}
+.trade-badge {
+  border-radius: 2px;
+  padding: 0.25em 0.5rem;
+  text-transform: uppercase;
+  font-weight: 700;
+  font-size: 12px;
+  letter-spacing: 0.3px;
+}

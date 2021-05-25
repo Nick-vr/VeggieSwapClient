@@ -9,4 +9,5 @@ export interface Trade {
   activeUserId: number;
   createdAt: Date;
   modifiedAt: Date;
+  status?: string;
 }

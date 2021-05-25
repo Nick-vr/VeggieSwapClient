@@ -19,6 +19,9 @@
           <th pSortableColumn="user.addressPostalCode">
             Postalcode <p-sortIcon field="user.addressPostalCode"></p-sortIcon>
           </th>
+          <th pSortableColumn="status">
+            Status <p-sortIcon field="status"></p-sortIcon>
+          </th>
 
 
           <th>More info</th>
@@ -44,7 +47,8 @@
           </td>
           <td>{{ trade.user.addressPostalCode }}</td>
 
-
+          <td><span [class]="'trade-badge status-' + trade.status.toLowerCase()">{{trade.status}}</span>
+          </td>
 
           <td>
             <button pButton pRipple type="button" icon="pi pi-search" label="Trade"

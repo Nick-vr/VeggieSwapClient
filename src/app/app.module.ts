@@ -48,6 +48,7 @@ import { ActiveTradesComponent } from './components/settings-components/active-t
 import { TradeItemsComponent } from './components/settings-components/trade-items/trade-items.component';
 import { VcoinsComponent } from './components/settings-components/vcoins/vcoins.component';
 import { EditProfileComponent } from './components/settings-components/edit-profile/edit-profile.component';
+import { StatsComponent } from './components/settings-components/stats/stats.component';
 
 @NgModule({
   declarations: [
@@ -69,6 +70,7 @@ import { EditProfileComponent } from './components/settings-components/edit-prof
     TradeItemsComponent,
     VcoinsComponent,
     EditProfileComponent,
+    StatsComponent,
   ],
   imports: [
     BrowserModule,

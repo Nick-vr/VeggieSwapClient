@@ -24,7 +24,7 @@
     <div class="p-md-6">
         <div class="p-col-12">
             <p-pickList [source]="userTradeItems" [target]="userProposedItems"
-                targetHeader="{{user?.firstName}} {{user?.lastName}}'s veggies" [dragdrop]="true" [responsive]="true"
+                targetHeader="{{user?.firstName}}'s veggies" [dragdrop]="true" [responsive]="true"
                 [sourceStyle]="{'height':'59vh' } " [targetStyle]="{'height':'calc(59vh + 1.1rem)'}"
                 filterBy="resourceName" sourceFilterPlaceholder="Search by name" [showTargetFilter]="false"
                 [showSourceControls]="false" [showTargetControls]="false" (onSourceSelect)=' toggleAcceptTradeButton()'
@@ -72,8 +72,8 @@
     <div class="p-md-6">
         <div class="p-col-12">
             <p-pickList [source]="receiverProposedItems" [target]="receiverTradeItems"
-                sourceHeader="{{receiver?.firstName}} {{receiver?.lastName}}'s veggies" [dragdrop]="true"
-                [responsive]="true" [sourceStyle]="{'height':'calc(59vh + 1.1rem)'}" [targetStyle]="{'height':'59vh'}"
+                sourceHeader="{{receiver?.firstName}}'s veggies" [dragdrop]="true" [responsive]="true"
+                [sourceStyle]="{'height':'calc(59vh + 1.1rem)'}" [targetStyle]="{'height':'59vh'}"
                 filterBy="resourceName" [showSourceFilter]="false" targetFilterPlaceholder="Search by name"
                 [showSourceControls]="false" [showTargetControls]="false" (onSourceSelect)=' toggleAcceptTradeButton()'
                 (onTargetSelect)=' toggleAcceptTradeButton()'>
