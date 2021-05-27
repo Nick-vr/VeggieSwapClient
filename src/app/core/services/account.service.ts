@@ -24,6 +24,8 @@ export class AccountService {
         if (loggedInUser) {
           localStorage.setItem('loggedInUser', JSON.stringify(loggedInUser));
           this.setCurrentUser(loggedInUser);
+
+          window.location.href = 'http://localhost:4200/settings';
         }
       })
     );

@@ -25,7 +25,7 @@ export class TradeItemsService {
 
   getTradeItemsFromSelectedUser(id: number): Observable<TradeItem[]> {
     const url = `${this.tradeItemEndpoint}/${id}`;
-    return this.http.get<TradeItem[]>(url, this.httpOptions);
+    return this.http.get<TradeItem[]>(url);
   }
 
   getTradeFromUsers(id: number, id2: number): Observable<TradeItem[]> {

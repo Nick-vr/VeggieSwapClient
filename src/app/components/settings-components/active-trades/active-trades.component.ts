@@ -61,7 +61,7 @@ export class ActiveTradesComponent implements OnInit {
     } else if (this.selectedItem.includes('Accept')) {
       this.TradeList = [];
       this.TradeList = this.FullList.filter((x) =>
-        x.status?.includes('response')
+        x.status?.includes('waiting')
       );
     } else if (this.selectedItem.includes('Completed')) {
       this.TradeList = [];

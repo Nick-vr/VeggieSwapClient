@@ -28,7 +28,7 @@ export class LoginComponent implements OnInit {
     }
   }
 
-  login(): void {
+  async login() {
     this.accountService.login(this.model).subscribe(
       () => {
         this.userId = 1;
@@ -41,9 +41,7 @@ export class LoginComponent implements OnInit {
         this.errorMessages = error.error;
       }
     );
-    setTimeout(() => {
-      window.location.href = 'http://localhost:4200/settings';
-    }, 1000);
+    console.log(this.errorMessages);
   }
 
   logout() {

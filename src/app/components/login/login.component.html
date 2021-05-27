@@ -1,34 +1,21 @@
+<div>
+  <p-message severity="error" text="validation error, try again" *ngIf="errorMessages"></p-message>
+</div>
 <div class="sign-in-wrapper">
+
   <form #loginForm="ngForm" (ngSubmit)="login()" *ngIf="!userId">
+
     <div class="p-formgroup-inline">
       <div class="p-field">
         <label for="email" class="p-sr-only">Email</label>
-        <input
-          [(ngModel)]="model.Email"
-          id="email"
-          name="email"
-          type="email"
-          pInputText
-          placeholder="Firstname"
-        />
+        <input [(ngModel)]="model.Email" id="email" name="email" type="email" pInputText placeholder="Firstname" />
       </div>
       <div class="p-field">
         <label for="password" class="p-sr-only">Password</label>
-        <p-password
-          [(ngModel)]="model.password"
-          name="password"
-          placeholder="Password"
-          [toggleMask]="true"
-          [feedback]="false"
-        ></p-password>
+        <p-password [(ngModel)]="model.password" name="password" placeholder="Password" [toggleMask]="true"
+          [feedback]="false"></p-password>
       </div>
-      <button
-        pButton
-        pRipple
-        type="button"
-        type="submit"
-        label="Login"
-      ></button>
+      <button pButton pRipple type="button" type="submit" label="Login"></button>
     </div>
   </form>
 
