@@ -22,11 +22,11 @@ export class UserService {
 
   getUser(id: number): Observable<User> {
     const url = `${this.userEndpoint}/${id}`;
-    return this.http.get<User>(url);
+    return this.http.get<User>(url, this.httpOptions);
   }
 
   getUsers(): Observable<User[]> {
-    return this.http.get<User[]>(this.userEndpoint);
+    return this.http.get<User[]>(this.userEndpoint, this.httpOptions);
   }
 
   addUser(user: User): Observable<User> {

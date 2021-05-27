@@ -28,6 +28,10 @@ export class EditProfileComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
+    console.log('hellooooo');
+    console.log(
+      `Bearer ${JSON.parse(localStorage.getItem('loggedInUser') || '{}').token}`
+    );
     this.getLoggedInUser();
     this.editProfileForm = this.fb.group({
       firstName: new FormControl('', Validators.required),
@@ -41,6 +45,7 @@ export class EditProfileComponent implements OnInit {
   }
 
   getLoggedInUser(): void {
+    console.log('hellooooo2');
     const loggedInUser = JSON.parse(
       localStorage.getItem('loggedInUser') || '{}'
     );
@@ -63,6 +68,7 @@ export class EditProfileComponent implements OnInit {
   }
 
   onSave() {
+    console.log('hellooooo3');
     const CURRENT_USER = this.currentUser;
     const EDITED_USER = this.editProfileForm?.value;
     const UPDATED_USER = { ...CURRENT_USER, ...EDITED_USER };
